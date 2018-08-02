@@ -1,1 +1,1 @@
-Spring Boot Movie Cruiser Server Application Codebase
+Spring Boot+Angular Movie Cruiser Application Codebase

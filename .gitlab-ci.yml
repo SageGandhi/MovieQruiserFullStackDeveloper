@@ -12,4 +12,4 @@ maven-build:
   script: mvn package
   artifacts:
     paths:
-    - target/*.jar
+    - movie-cruiser-app/target/*.jar
