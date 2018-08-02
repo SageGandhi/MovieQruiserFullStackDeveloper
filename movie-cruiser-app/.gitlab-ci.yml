@@ -6,15 +6,13 @@ maven-test:
   image: maven:3-jdk-8
   stage: test
   script: 
-  - cd movie-cruiser-app/
   - mvn test
 maven-build:
   image: maven:3-jdk-8
   stage: build
   script: 
-  - cd movie-cruiser-app/
   - mvn package
   artifacts:
     paths:
-    - movie-cruiser-app/target/*.jar
+    - target/*.jar
 
