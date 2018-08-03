@@ -59,7 +59,6 @@ public class MovieControllerTest
 		movie.setVoteAverage( (float)(Math.random()*100)/100);
 		movie.setVoteCount( (int)Math.ceil( Math.random()*1000 ));
 		return movie;
-
 	}
 	@Test
 	public void testCreateNewMovie() throws Exception
