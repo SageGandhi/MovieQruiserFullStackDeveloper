@@ -5,16 +5,12 @@ stages:
 maven-test:
   image: maven:3-jdk-8
   stage: test
-  script: 
-  - cd movie-cruiser-app/
-  - mvn test
+  script: 'mvn test -B -f ./movie-cruiser-app/'
 maven-build:
   image: maven:3-jdk-8
   stage: build
-  script: 
-  - cd movie-cruiser-app/
-  - mvn package
+  script: 'mvn package -U -f ./movie-cruiser-app/'
   artifacts:
     paths:
-    - movie-cruiser-app/target/*.jar
+    - 'target/*.jar'
 
