@@ -54,10 +54,12 @@ public class DefaultMovieServiceTest
 	@Test
 	public void testCreateNewMovie() throws MovieAlredayExistsException
 	{
-		Mockito.when(movieRepository.save(Mockito.<Movie>any())).thenReturn(movie);
-		Mockito.when(movieRepository.findById(Mockito.<Integer>any())).thenReturn(optionalMovie);
+		Mockito.when(movieRepository.save(movie)).thenReturn(movie);
+		
 		defaultMovieService.createNewMovie( movie);
 		
+		verify(movieRepository, Mockito.times(1)).save(movie);
+		verify(movieRepository, Mockito.times(1)).findById(movie.getId());
 	}
 
 	@Test
