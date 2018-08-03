@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiResponses;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/v1/movie")
-//Added For Versioning.Need To Clarify How To Do Versioning.
+//Added For Versioning.Need To Clarify How To Do Versoning.
 public class MovieController
 {
 	public static final String MIME_JSON = "application/vnd.edu.gandhi.prajit.moviecruiser+json";
@@ -70,7 +70,7 @@ public class MovieController
 
 	}
 
-	@DeleteMapping(path = "/{id}",consumes={MIME_JSON},produces={MIME_JSON})
+	@DeleteMapping(path = "/{id}")
 	@ApiOperation(value = "Delete Existing Movie", notes = "Used For Deleting Movie Information", nickname = "deleteMovieByMovieId")
 	@ApiResponses({ @ApiResponse(code = 200, message = "Movie Information Deleted"), @ApiResponse(code = 404, message = "Movie Not Exists In Database")
 	})
