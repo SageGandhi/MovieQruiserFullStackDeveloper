@@ -1,8 +1,12 @@
 package edu.gandhi.prajit.moviecruiser.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 import java.time.LocalDate;
+import java.util.List;
+
 import javax.transaction.Transactional;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +15,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import edu.gandhi.prajit.moviecruiser.repository.entity.Movie;
 
 @RunWith(SpringRunner.class)
@@ -64,25 +69,30 @@ public class MovieRepositoryTest
 		assertThat( movieActual).isNotNull();
 		
 		assertThat( "The Shawshank Redemption").isEqualToIgnoringCase( movieActual.getName());
-		assertThat(movieActual.getVoteCount()).isEqualTo( movieFixture.getVoteCount()+25 );
+		assertThat(movieActual.getVoteCount()).isEqualTo( movieFixture.getVoteCount() );
 	}
 
 	@Test
 	public void testDeleteMovieByMovieId() 
 	{
-		
+		movieRepository.deleteById(1);
+		assertThat(movieRepository.findById(1).orElse(null)).isNull();
 	}
 
 	@Test
 	public void testGetMovieByMovieId()
 	{
-		
+		final Movie movie = movieRepository.findById(1).orElse(null);
+		assertThat(movie).isNotNull();
+		assertThat( "The Shawshank Redemption").isEqualToIgnoringCase( movie.getName());
+		assertThat( "1994").isEqualToIgnoringCase( movie.getComments());
 	}
 
 	@Test
 	public void testGetAllMovies()
 	{
-		
+		final List<Movie> movieList = movieRepository.findAll();
+		assertThat(movieList).isNotNull();
+		assertThat(movieList).hasSize(4);
 	}
-
 }
