@@ -1,16 +1,28 @@
-image: java:8-jdk
+image: maven:3-jdk-8
+before_script:
+ - source ./EnvironmentVariables.sh
 stages:
-- test
-- build
+ - test
+ - build
+services:
+ - 'mysql:5.5'
+variables:
+  MYSQL_MOVIE_DB_USERNAME: root 
+  MYSQL_MOVIE_DB_PASSWORD: root 
+  MYSQL_MOVIE_DB_URL: jdbc:mysql://localhost:3306/MovieCruiser
+  MYSQL_MOVIE_DB_NAME: MovieCruiser 
+cache:
+ paths:
+  - .m2/repository
+  - target
 maven-test:
-  image: maven:3-jdk-8
-  stage: test
-  script: 'mvn test -B -f ./movie-cruiser-app/'
+ image: maven:3-jdk-8
+ stage: test
+ script: "mvn test -B -f ./movie-cruiser-app/"
 maven-build:
-  image: maven:3-jdk-8
-  stage: build
-  script: 'mvn package -U -f ./movie-cruiser-app/'
-  artifacts:
-    paths:
-    - 'target/*.jar'
-
+ image: maven:3-jdk-8
+ stage: build
+ script: "mvn package -B -f ./movie-cruiser-app/"
+ artifacts:
+  paths:
+   - target/*.jar
