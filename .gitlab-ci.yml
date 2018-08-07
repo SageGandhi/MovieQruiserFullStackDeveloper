@@ -10,7 +10,8 @@ variables:
   MYSQL_MOVIE_DB_USERNAME: root 
   MYSQL_MOVIE_DB_PASSWORD: root 
   MYSQL_MOVIE_DB_URL: jdbc:mysql://localhost:3306/MovieCruiser
-  MYSQL_MOVIE_DB_NAME: MovieCruiser 
+  MYSQL_MOVIE_DB_NAME: MovieCruiser
+  MYSQL_ROOT_PASSWORD: root 
 cache:
  paths:
   - .m2/repository
