@@ -25,6 +25,11 @@ maven-build:
  stage: build
  script: 
   - cd ./movie-cruiser-app
+  - echo $MYSQL_MOVIE_DB_USERNAME
+  - echo $MYSQL_MOVIE_DB_PASSWORD
+  - echo $MYSQL_MOVIE_DB_URL
+  - echo $MYSQL_MOVIE_DB_NAME
+  - echo $MYSQL_ROOT_PASSWORD
   - mvn package -B
  artifacts:
   paths:
