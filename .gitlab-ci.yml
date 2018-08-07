@@ -33,4 +33,4 @@ maven-build:
   - mvn package -B
  artifacts:
   paths:
-   - ./movie-cruiser-app/target/*.jar
+   - target/*.jar
