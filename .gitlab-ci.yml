@@ -10,27 +10,14 @@ variables:
   MYSQL_MOVIE_DB_URL: jdbc:mysql://localhost:3306/MovieCruiser
   MYSQL_MOVIE_DB_NAME: MovieCruiser
   MYSQL_ROOT_PASSWORD: root 
-cache:
- paths:
-  - .m2/repository
-  - ./movie-cruiser-app/target
 maven-test:
  image: maven:3-jdk-8
  stage: test
- script: 
-  - cd ./movie-cruiser-app
-  - mvn clean -B
+ script: mvn clean -B
 maven-build:
  image: maven:3-jdk-8
  stage: build
- script: 
-  - cd ./movie-cruiser-app
-  - echo $MYSQL_MOVIE_DB_USERNAME
-  - echo $MYSQL_MOVIE_DB_PASSWORD
-  - echo $MYSQL_MOVIE_DB_URL
-  - echo $MYSQL_MOVIE_DB_NAME
-  - echo $MYSQL_ROOT_PASSWORD
-  - mvn package -B
+ script: mvn package -B
  artifacts:
   paths:
    - target/*.jar
