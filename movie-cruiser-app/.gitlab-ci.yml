@@ -1,6 +1,6 @@
 image: maven:3-jdk-8
 before_script:
- - source ./EnvironmentVariables.sh
+ - source ./movie-cruiser-app/EnvironmentVariables.sh
 stages:
  - test
  - build
@@ -14,15 +14,15 @@ variables:
 cache:
  paths:
   - .m2/repository
-  - target
+  - ./movie-cruiser-app/target
 maven-test:
  image: maven:3-jdk-8
  stage: test
- script: "mvn test -B -f ./movie-cruiser-app/"
+ script: mvn clean -B -f ./movie-cruiser-app/pom.xml
 maven-build:
  image: maven:3-jdk-8
  stage: build
- script: "mvn package -B -f ./movie-cruiser-app/"
+ script: mvn package -B -f ./movie-cruiser-app/pom.xml
  artifacts:
   paths:
-   - target/*.jar
+   - ./movie-cruiser-app/target/*.jar
