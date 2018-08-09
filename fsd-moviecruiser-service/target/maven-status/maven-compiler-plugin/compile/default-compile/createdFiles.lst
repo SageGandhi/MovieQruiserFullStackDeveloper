@@ -1,0 +1,9 @@
+edu/gandhi/prajit/moviecruiser/services/DefaultMovieService.class
+edu/gandhi/prajit/moviecruiser/configuration/SwaggerApiConfig.class
+edu/gandhi/prajit/moviecruiser/repository/MovieRepository.class
+edu/gandhi/prajit/moviecruiser/exception/MovieAlredayExistsException.class
+edu/gandhi/prajit/moviecruiser/services/MovieService.class
+edu/gandhi/prajit/moviecruiser/MovieCruiserAppApplication.class
+edu/gandhi/prajit/moviecruiser/repository/entity/Movie.class
+edu/gandhi/prajit/moviecruiser/resources/MovieController.class
+edu/gandhi/prajit/moviecruiser/exception/MovieNotFoundException.class
