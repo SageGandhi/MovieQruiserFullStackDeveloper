@@ -93,6 +93,6 @@ public class MovieRepositoryTest
 	{
 		final List<Movie> movieList = movieRepository.findAll();
 		assertThat(movieList).isNotNull();
-		assertThat(movieList).hasSize(4);
+		assertThat(movieList).hasSize(3);
 	}
 }
