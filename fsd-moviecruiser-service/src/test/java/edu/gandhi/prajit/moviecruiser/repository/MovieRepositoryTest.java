@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.junit.Before;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +20,12 @@ import edu.gandhi.prajit.moviecruiser.repository.entity.Movie;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = Replace.NONE)
+@AutoConfigureTestDatabase(replace = Replace.AUTO_CONFIGURED)
 @Transactional
 public class MovieRepositoryTest
 {
 	@Autowired
 	private MovieRepository movieRepository;
-	private Movie movieFixture;
-	
-	@Before
-	public void setUp() throws Exception
-	{
-		this.movieRepository.save(createMovie( 1, "The Shawshank Redemption", "1994", "https://www.imdb.com/title/tt0111161/?ref_=adv_li_i" ));
-		this.movieRepository.save(createMovie( 2, "The Godfather", "1972", "https://www.imdb.com/title/tt0068646/?ref_=adv_li_i" )); 
-		this.movieRepository.save(createMovie( 3, " The Dark Knight", "2008", "https://www.imdb.com/title/tt0468569/?ref_=adv_li_i" ) );
-	}
 
 	private Movie createMovie(int id, String name, String comments, String posterPath)
 	{
@@ -48,11 +39,15 @@ public class MovieRepositoryTest
 		movie.setVoteCount( (int)Math.ceil( Math.random() * 1000 ) );
 		return movie;
 	}
-
+	@After
+	public void clearRepo() {
+		movieRepository.deleteAll();
+	}
 	@Test
 	public void testCreateNewMovie()
 	{
-		movieFixture = movieRepository.findById(1).orElse(null);
+		movieRepository.save(createMovie( 1, "The Shawshank Redemption", "1994", "https://www.imdb.com/title/tt0111161/?ref_=adv_li_i" ));
+		final Movie movieFixture = movieRepository.findById(1).orElse(null);
 		assertThat( movieFixture).isNotNull();
 		assertThat( "The Shawshank Redemption").isEqualToIgnoringCase( movieFixture.getName());
 		assertThat( "1994").isEqualToIgnoringCase( movieFixture.getComments());
@@ -61,7 +56,8 @@ public class MovieRepositoryTest
 	@Test
 	public void testUpdateMovieInformation() 
 	{
-		movieFixture = movieRepository.findById(1).orElse(null);
+		movieRepository.save(createMovie( 1, "The Shawshank Redemption", "1994", "https://www.imdb.com/title/tt0111161/?ref_=adv_li_i" ));
+		final Movie movieFixture = movieRepository.findById(1).orElse(null);
 		movieFixture.setVoteCount( movieFixture.getVoteCount()+25 );
 		movieRepository.save(movieFixture);
 		
@@ -75,6 +71,7 @@ public class MovieRepositoryTest
 	@Test
 	public void testDeleteMovieByMovieId() 
 	{
+		movieRepository.save(createMovie( 1, "The Shawshank Redemption", "1994", "https://www.imdb.com/title/tt0111161/?ref_=adv_li_i" ));
 		movieRepository.deleteById(1);
 		assertThat(movieRepository.findById(1).orElse(null)).isNull();
 	}
@@ -82,6 +79,7 @@ public class MovieRepositoryTest
 	@Test
 	public void testGetMovieByMovieId()
 	{
+		movieRepository.save(createMovie( 1, "The Shawshank Redemption", "1994", "https://www.imdb.com/title/tt0111161/?ref_=adv_li_i" ));
 		final Movie movie = movieRepository.findById(1).orElse(null);
 		assertThat(movie).isNotNull();
 		assertThat( "The Shawshank Redemption").isEqualToIgnoringCase( movie.getName());
@@ -91,6 +89,10 @@ public class MovieRepositoryTest
 	@Test
 	public void testGetAllMovies()
 	{
+		this.movieRepository.save(createMovie( 1, "The Shawshank Redemption", "1994", "https://www.imdb.com/title/tt0111161/?ref_=adv_li_i" ));
+		this.movieRepository.save(createMovie( 2, "The Godfather", "1972", "https://www.imdb.com/title/tt0068646/?ref_=adv_li_i" )); 
+		this.movieRepository.save(createMovie( 3, " The Dark Knight", "2008", "https://www.imdb.com/title/tt0468569/?ref_=adv_li_i" ) );
+		
 		final List<Movie> movieList = movieRepository.findAll();
 		assertThat(movieList).isNotNull();
 		assertThat(movieList).hasSize(3);
