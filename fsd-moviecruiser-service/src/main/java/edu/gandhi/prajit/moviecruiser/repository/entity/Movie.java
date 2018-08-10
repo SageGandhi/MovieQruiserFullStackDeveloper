@@ -9,13 +9,12 @@ import javax.persistence.Table;
 @Table(name = "Movie")
 public class Movie
 {
-	//Need To Use Lombok For BoilerPlate Code/Setter/Getter
 	@Id
 	@Column(name = "MovieId")
 	private int id;
 	@Column(name = "Name")
 	private String name;
-	@Column(name = "Comments")
+	@Column(name = "Comments",length=2500)
 	private String comments;
 	@Column(name = "PosterPath")
 	private String posterPath;
