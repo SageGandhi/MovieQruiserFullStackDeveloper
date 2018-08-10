@@ -1,4 +1,4 @@
-package edu.gandhi.prajit.moviecruiser.resources;
+package edu.gandhi.prajit.moviecruiser.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

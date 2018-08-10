@@ -21,6 +21,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import edu.gandhi.prajit.moviecruiser.controller.MovieController;
 import edu.gandhi.prajit.moviecruiser.repository.entity.Movie;
 import edu.gandhi.prajit.moviecruiser.services.MovieService;
 
