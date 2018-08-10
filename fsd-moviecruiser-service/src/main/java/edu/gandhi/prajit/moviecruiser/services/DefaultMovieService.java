@@ -48,21 +48,18 @@ public class DefaultMovieService implements MovieService
 	@Override
 	public void deleteMovieByMovieId(int id) throws MovieNotFoundException
 	{
-		final Movie movie = movieRepository.findById(id).orElse(null);
-		if (null == movie) {
+		final Optional<Movie> movie = movieRepository.findById(id);
+		if (!movie.isPresent()) {
 			throw new MovieNotFoundException("Unable To Delete Movie, Movie Id Not Exists In DataBase:"+id);
 		}
-		movieRepository.delete(movie);
+		movie.ifPresent(movieRepository::delete);
 	}
 
 	@Override
 	public Movie getMovieByMovieId(int id) throws MovieNotFoundException
 	{
-		final Movie movie = movieRepository.findById(id).orElse(null);
-		if (null == movie) {
-			throw new MovieNotFoundException("Unable To Retrieve Movie, Movie Id Not Exists In DataBase:"+id);
-		}
-		return movie;
+		final Optional<Movie> movie = movieRepository.findById(id);
+		return movie.orElseThrow(()->new MovieNotFoundException("Unable To Retrieve Movie, Movie Id Not Exists In DataBase:"+id));
 	}
 
 	@Override
