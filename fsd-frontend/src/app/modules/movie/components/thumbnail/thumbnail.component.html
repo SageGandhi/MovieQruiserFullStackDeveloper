@@ -1,3 +1,1 @@
-<p>
-  thumbnail works!
-</p>
+<img *ngFor="let movie of movieList" [src]="movie.poster_path" [alt]="movie.title">
