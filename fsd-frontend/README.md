@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+#Added By Prajit
+Creating New Application ng new <application-name> --minimal
+ng generate component <component-name>
+ng generate module <module-name>
+ng generate module modules/movie
+ng generate component modules/movie/components/hello-world --module modules/movie/movie.module.ts --prefix movie
