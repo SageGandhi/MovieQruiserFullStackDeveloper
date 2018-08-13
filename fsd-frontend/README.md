@@ -34,3 +34,4 @@ ng generate module <module-name>
 ng generate module modules/movie
 ng generate component modules/movie/components/thumbnail --module modules/movie/movie.module.ts --prefix movie
 ng generate service modules/movie/service/tmdb-movie --module modules/movie/movie.module.ts --flat
+ng generate component modules/movie/components/popular-movies --module modules/movie/movie.module.ts --prefix movie
