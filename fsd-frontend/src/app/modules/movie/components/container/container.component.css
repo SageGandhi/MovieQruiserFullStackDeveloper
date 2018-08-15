@@ -1,0 +1,21 @@
+.container::-webkit-scrollbar{
+  width:0.5vw;
+  background: rgba(197, 181, 243, 0.979);
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: rgb(183, 168, 228);
+}
+
+/* Handle on hover */
+.container::-webkit-scrollbar-thumb:hover {
+    background: rgba(95, 51, 218, 0.904);
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+}
+:host{
+  height: 100vh;
+}

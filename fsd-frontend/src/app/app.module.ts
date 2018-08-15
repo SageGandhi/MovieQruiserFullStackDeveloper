@@ -3,7 +3,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MovieModule } from './modules/movie/movie.module';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+import { MaterialModule } from './modules/material/material.module';
 
+const movieRoutes: Routes = [
+  {
+    path: '',
+    redirectTo: '/movies/popular',
+    pathMatch: 'full'
+  }
+];
 @NgModule({
   declarations: [
     AppComponent
@@ -11,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     HttpClientModule,
-    MovieModule
+    MovieModule,
+    MaterialModule,
+    RouterModule.forRoot(movieRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,6 @@
-<h3>{{ title }}!</h3>
-<movie-popular-movies></movie-popular-movies>
-<movie-top-rated></movie-top-rated>
+<mat-toolbar color="primary">
+  <span>{{applicationName}}</span>
+  <button mat-button routerLink='/movies/popular'>Popular Movies</button>
+  <button mat-button routerLink='/movies/top_rated'>Top-Rated Movies</button>
+</mat-toolbar>
+<router-outlet></router-outlet>

@@ -35,3 +35,6 @@ ng generate module modules/movie
 ng generate component modules/movie/components/thumbnail --module modules/movie/movie.module.ts --prefix movie
 ng generate service modules/movie/service/tmdb-movie --module modules/movie/movie.module.ts --flat
 ng generate component modules/movie/components/popular-movies --module modules/movie/movie.module.ts --prefix movie
+ng generate module modules/material
+ng generate module modules/movie-router
+ npm install --save @angular/material @angular/cdk @angular/animations hammerjs--save-exact

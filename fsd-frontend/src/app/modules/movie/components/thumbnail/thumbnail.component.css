@@ -1,0 +1,41 @@
+.movie-image{
+  width:45%;
+  height: 45%;
+  padding-top: 20px;
+}
+.movie-thumbnail{
+   margin:20px;
+   width:25vw;
+   text-align: center;
+   display: inline-table;
+   position:relative;
+   -webkit-box-shadow:0 10px 10px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+   -moz-box-shadow:0 10px 10px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+   box-shadow:0 10px 10px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.header-color{
+  color:orange;
+}
+.overview{
+  text-align:left;
+  font-size: 1.5vh;
+  height: 11vh;
+  overflow-y: auto;
+  margin :auto;
+}
+
+.overview::-webkit-scrollbar{
+  width:0.25vw;
+  background: #959cdf;
+
+}
+.overview::-webkit-scrollbar-thumb {
+  background: rgba(95, 51, 218, 0.904);
+  opacity: 0;
+}
+
+/* Handle on hover */
+.overview::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 7, 95, 0.829);
+}
+

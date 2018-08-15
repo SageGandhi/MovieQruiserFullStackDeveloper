@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private title:string = 'This Will Be My MovieCruiser Application.In Batman Theme.';
+  private applicationName:string ='MovieCruiser';
 }
