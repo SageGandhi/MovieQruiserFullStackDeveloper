@@ -5,6 +5,7 @@ import { MovieModule } from './modules/movie/movie.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from './modules/material/material.module';
+import { FormsModule } from '@angular/forms';
 
 const movieRoutes: Routes = [
   {
@@ -19,6 +20,7 @@ const movieRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     MovieModule,
     MaterialModule,

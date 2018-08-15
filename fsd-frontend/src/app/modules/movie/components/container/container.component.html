@@ -1,5 +1,4 @@
-<div class="container">
-  <div class="row">
-      <movie-thumbnail *ngFor="let movie of movies" [movie]="movie"></movie-thumbnail>
-  </div>
-</div>
+<movie-thumbnail *ngFor="let movie of movies" [movie]="movie" [inWatchListApi]="inWatchListApi"
+  (addMovie2WatchListEmitterInChild)="addToWatchListInParent($event)"
+  (deleteMovieFromWatchListEmitterInChild)="deleteFromWatchListInParent($event)">
+</movie-thumbnail>

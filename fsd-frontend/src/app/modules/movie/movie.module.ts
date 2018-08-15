@@ -6,13 +6,17 @@ import { TmdbMovieService } from './service/tmdb-movie.service';
 import { ContainerComponent } from './components/container/container.component';
 import { MovieRouterModule } from '../movie-router/movie-router.module';
 import { MaterialModule } from '../material/material.module';
-
+import { WatchlistComponent } from './components/watchlist/watchlist.component';
+import { TmdbContainerWatchlistComponent } from './components/tmdb-container-watchlist/tmdb-container-watchlist.component';
+import { WatchlistUpdateDialogComponent } from './components/watchlist-update-dialog/watchlist-update-dialog.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
-    CommonModule, HttpClientModule, MovieRouterModule,MaterialModule
+    CommonModule, HttpClientModule, MovieRouterModule,MaterialModule,FormsModule
   ],
-  declarations: [ThumbnailComponent, ContainerComponent],
-  exports: [ThumbnailComponent, ContainerComponent, MovieRouterModule],
-  providers: [TmdbMovieService]
+  declarations: [ThumbnailComponent, ContainerComponent, WatchlistComponent, TmdbContainerWatchlistComponent, WatchlistUpdateDialogComponent],
+  exports: [ThumbnailComponent, ContainerComponent, MovieRouterModule,WatchlistComponent,WatchlistUpdateDialogComponent],
+  providers: [TmdbMovieService],
+  entryComponents:[WatchlistUpdateDialogComponent]
 })
 export class MovieModule { }

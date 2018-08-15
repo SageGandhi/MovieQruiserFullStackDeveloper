@@ -9,6 +9,7 @@ export interface Movie {
   overview: string;
   release_date: string;
   id:number;
+  comment:string;
   //Add Backdorp Based On Screen Size Later
   //backdrops:Array<MovieImage>;
 }

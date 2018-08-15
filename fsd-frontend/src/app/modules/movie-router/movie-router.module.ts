@@ -1,21 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ContainerComponent } from '../movie/components/container/container.component';
+import { TmdbContainerWatchlistComponent } from '../movie/components/tmdb-container-watchlist/tmdb-container-watchlist.component';
+import { WatchlistComponent } from '../movie/components/watchlist/watchlist.component';
+
 const movieRoutes: Routes = [
   {
     path: 'movies/popular',
-    component: ContainerComponent,
+    component: TmdbContainerWatchlistComponent,
     data:{
       movieType:'popular'
     }
   },
   {
     path: 'movies/top_rated',
-    component: ContainerComponent,
+    component: TmdbContainerWatchlistComponent,
     data:{
       movieType:'top_rated'
     }
+  },
+  {
+    path: 'movies/watchlist',
+    component: WatchlistComponent
   }
 ]
 

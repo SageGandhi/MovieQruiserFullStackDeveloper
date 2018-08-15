@@ -37,4 +37,7 @@ ng generate service modules/movie/service/tmdb-movie --module modules/movie/movi
 ng generate component modules/movie/components/popular-movies --module modules/movie/movie.module.ts --prefix movie
 ng generate module modules/material
 ng generate module modules/movie-router
- npm install --save @angular/material @angular/cdk @angular/animations hammerjs--save-exact
+npm install --save @angular/material @angular/cdk @angular/animations hammerjs--save-exact
+npm install json-server --save-exact --global & json-server .\json-server\mock-watchlist.json
+ng generate component modules/movie/components/watchlist --module modules/movie/movie.module.ts --prefix movie
+ng generate component modules/movie/components/tmdb-container-watchlist --module modules/movie/movie.module.ts --prefix movie

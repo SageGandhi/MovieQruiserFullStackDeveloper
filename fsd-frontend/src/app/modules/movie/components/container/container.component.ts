@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '../../movie';
 import { TmdbMovieService } from '../../service/tmdb-movie.service';
-import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'movie-container',
@@ -9,19 +9,29 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./container.component.css']
 })
 export class ContainerComponent implements OnInit {
+  @Input()
   private movies:Array<Movie>;
-  private movieType:string;
+  @Input()
+  private inWatchListApi:boolean;
+  constructor(private movieService:TmdbMovieService,private snackBar:MatSnackBar) {
 
-  constructor(private movieService:TmdbMovieService,private routes:ActivatedRoute) {
-    this.movies = [];
-    this.routes.data.subscribe((datum)=>{
-      console.log(datum);
-      this.movieType = datum.movieType;
-    });
   }
 
   ngOnInit() {
-    this.movieService.getMoviesByType(this.movieType)
-      .subscribe(moviesList=>this.movies.push(...moviesList));
+
+  }
+  addToWatchListInParent(movie){
+    this.movieService.addMovieToWishList(movie)
+      .subscribe((movie)=>{
+        console.log(`Added To My WatchList:${JSON.stringify(movie)}`);
+        this.snackBar.open(`${movie.title} Added To Your WatchList.`,'',{duration:2500});
+      });
+  }
+  deleteFromWatchListInParent(movie){
+    this.movies=this.movies.filter(item=>item.id!==movie.id);
+    this.movieService.deleteMovieFromWatchList(movie).subscribe((text)=>{
+      console.log(`Deleted From My WatchList:${JSON.stringify(movie)}`);
+      this.snackBar.open(`${movie.title} Removed From Your WatchList.`,'',{duration:2500});
+    });
   }
 }
