@@ -15,6 +15,7 @@ export class TmdbMovieService {
   private getAllWishlistUri: string;
   private updateWishlistUri: string;
   private deleteWishlistUri:string;
+  private movieSearchUri:string;
   //https://raw.githubusercontent.com/mlabouardy/moviedb/master/moviedb_test.go
 
   constructor(private http: HttpClient) {
@@ -26,6 +27,7 @@ export class TmdbMovieService {
     this.deleteWishlistUri = this.baseWishlistUri + "/movies";
     this.imageBaseUri = "https://image.tmdb.org/t/p/w185_and_h278_bestv2";
     this.tmdbEndpoint = "https://api.themoviedb.org/3/movie/";
+    this.movieSearchUri = 'https://api.themoviedb.org/3/search/movie';
     this.apiKeyQueryString = `api_key=${this.apiKey}`;
     //https://api.themoviedb.org/3/movie/popular?api_key=ed7616b341eab536bc2958001630a397&page=1
     //https://api.themoviedb.org/3/movie/top_rated?api_key=<<api_key>>&language=en-US&page=1
@@ -64,5 +66,9 @@ export class TmdbMovieService {
   updateMovieFromWatchList(movie: Movie):Observable<string>{
     const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
     return this.http.put<string>(`${this.deleteWishlistUri}/${movie.id}`,movie,{headers:headers,responseType:'json'}).pipe(retry(3));
+  }
+  searchByText(searchText:string):Observable<Array<Movie>>{
+    let searchUri = `${this.movieSearchUri}?${this.apiKeyQueryString}&language=en-US&page=1&include_adult=false&query=${searchText}`;
+    return this.http.get(searchUri).pipe(retry(3),map(this.pickMovieResults),map(this.transformPosterPath.bind(this)));
   }
 }
