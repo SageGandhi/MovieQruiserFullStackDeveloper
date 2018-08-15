@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { TmdbMovieService } from '../../service/tmdb-movie.service';
 import { Movie } from '../../movie';
+import { TmdbMovieService } from '../../service/tmdb-movie.service';
 
 @Component({
-  selector: 'movie-popular-movies',
-  templateUrl: './popular-movies.component.html',
-  styleUrls: ['./popular-movies.component.css']
+  selector: 'movie-top-rated',
+  templateUrl: './top-rated.component.html',
+  styleUrls: ['./top-rated.component.css']
 })
-export class PopularMoviesComponent implements OnInit {
+export class TopRatedComponent implements OnInit {
   private movies:Array<Movie>;
   constructor(private movieService:TmdbMovieService) {
     this.movies = [];
   }
 
   ngOnInit() {
-    this.movieService.getMoviesByType('popular')
+    this.movieService.getMoviesByType('top_rated')
       .subscribe(moviesList=>this.movies.push(...moviesList))
       ;
   }
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '../../movie';
 import { TmdbMovieService } from '../../service/tmdb-movie.service';
 @Component({
@@ -7,15 +7,12 @@ import { TmdbMovieService } from '../../service/tmdb-movie.service';
   styleUrls: ['./thumbnail.component.css']
 })
 export class ThumbnailComponent implements OnInit {
-  private movieList:Array<Movie>;
+  @Input()
+  private movie:Movie;
 
-  constructor(private tmdbMovieService:TmdbMovieService) {
-    this.movieList = [];
-  }
+  constructor() {}
 
   ngOnInit() {
-    this.tmdbMovieService.getPopularMovies()
-      //Spread Operator
-      .subscribe(moviesList=>this.movieList.push(...moviesList));
+
   }
 }

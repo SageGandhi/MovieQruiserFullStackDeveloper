@@ -1,1 +1,2 @@
-<img *ngFor="let movie of movieList" [src]="movie.poster_path" [alt]="movie.title">
+<img [src]="movie?.poster_path" [alt]="movie?.title">
+<!--Render Only When Movie Avaliable-->
