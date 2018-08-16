@@ -38,12 +38,12 @@ public class Movie {
 	private String posterPath;
 
 	@Lob
-	@Column(name = "Overview", columnDefinition = "CLOB")
+	@Column(name = "Overview")
 	@JsonProperty("overview")
 	private String overview;
 
 	@Lob
-	@Column(name = "Comment", columnDefinition = "CLOB")
+	@Column(name = "Comment")
 	@JsonProperty("comment")
 	private String comment;
 
