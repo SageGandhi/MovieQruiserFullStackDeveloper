@@ -20,7 +20,7 @@ export class TmdbMovieService {
 
   constructor(private http: HttpClient) {
     this.apiKey = '5fdf2806647c21ec8d2d34b7e4e6b0a1';
-    // this.baseWishlistUri = 'http://localhost:3000';
+    // this.baseWishlistUri = 'http://localhost:3000/movie';
     this.baseWishlistUri = 'http://localhost:8080/api/v1/movie';
 
     // this.createWishlistUri = this.baseWishlistUri + "/movies";
