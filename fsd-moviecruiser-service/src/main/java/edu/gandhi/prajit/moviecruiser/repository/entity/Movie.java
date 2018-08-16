@@ -3,33 +3,58 @@ package edu.gandhi.prajit.moviecruiser.repository.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "Movie")
-public class Movie
-{
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Movie {
 	@Id
 	@Column(name = "MovieId")
 	private int id;
-	@Column(name = "Name")
-	private String name;
-	@Column(name = "Comments",length=2500)
-	private String comments;
-	@Column(name = "PosterPath")
-	private String posterPath;
-	@Column(name = "ReleaseDate")
-	private String releaseDate;
-	@Column(name = "VoteAverage")
-	private float voteAverage;
+
 	@Column(name = "VoteCount")
+	@JsonProperty("vote_count")
 	private int voteCount;
+
+	@Column(name = "VoteAverage")
+	@JsonProperty("vote_average")
+	private float voteAverage;
+
+	@Column(name = "Title")
+	@JsonProperty("title")
+	private String title;
+
+	@Column(name = "Popularity")
+	@JsonProperty("popularity")
+	private float popularity;
+
+	@Column(name = "PosterPath")
+	@JsonProperty("poster_path")
+	private String posterPath;
+
+	@Lob
+	@Column(name = "Overview", columnDefinition = "CLOB")
+	@JsonProperty("overview")
+	private String overview;
+
+	@Lob
+	@Column(name = "Comment", columnDefinition = "CLOB")
+	@JsonProperty("comment")
+	private String comment;
+
+	@Column(name = "ReleaseDate")
+	@JsonProperty("release_date")
+	private String releaseDate;
 
 	/**
 	 * @return the id
 	 */
-	public int getId()
-	{
+	public final int getId() {
 		return id;
 	}
 
@@ -37,101 +62,14 @@ public class Movie
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(int id)
-	{
+	public final void setId(int id) {
 		this.id = id;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName()
-	{
-		return name;
-	}
-
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
-	/**
-	 * @return the comments
-	 */
-	public String getComments()
-	{
-		return comments;
-	}
-
-	/**
-	 * @param comments
-	 *            the comments to set
-	 */
-	public void setComments(String comments)
-	{
-		this.comments = comments;
-	}
-
-	/**
-	 * @return the posterPath
-	 */
-	public String getPosterPath()
-	{
-		return posterPath;
-	}
-
-	/**
-	 * @param posterPath
-	 *            the posterPath to set
-	 */
-	public void setPosterPath(String posterPath)
-	{
-		this.posterPath = posterPath;
-	}
-
-	/**
-	 * @return the releaseDate
-	 */
-	public String getReleaseDate()
-	{
-		return releaseDate;
-	}
-
-	/**
-	 * @param releaseDate
-	 *            the releaseDate to set
-	 */
-	public void setReleaseDate(String releaseDate)
-	{
-		this.releaseDate = releaseDate;
-	}
-
-	/**
-	 * @return the voteAverage
-	 */
-	public float getVoteAverage()
-	{
-		return voteAverage;
-	}
-
-	/**
-	 * @param voteAverage
-	 *            the voteAverage to set
-	 */
-	public void setVoteAverage(float voteAverage)
-	{
-		this.voteAverage = voteAverage;
 	}
 
 	/**
 	 * @return the voteCount
 	 */
-	public int getVoteCount()
-	{
+	public final int getVoteCount() {
 		return voteCount;
 	}
 
@@ -139,15 +77,119 @@ public class Movie
 	 * @param voteCount
 	 *            the voteCount to set
 	 */
-	public void setVoteCount(int voteCount)
-	{
+	public final void setVoteCount(int voteCount) {
 		this.voteCount = voteCount;
 	}
 
-	@Override
-	public String toString()
-	{
-		return String.format( "Movie [id=%s, name=%s, comments=%s, posterPath=%s, releaseDate=%s, voteAverage=%s, voteCount=%s]", id, name, comments, posterPath, releaseDate, voteAverage, voteCount );
+	/**
+	 * @return the voteAverage
+	 */
+	public final float getVoteAverage() {
+		return voteAverage;
 	}
 
+	/**
+	 * @param voteAverage
+	 *            the voteAverage to set
+	 */
+	public final void setVoteAverage(float voteAverage) {
+		this.voteAverage = voteAverage;
+	}
+
+	/**
+	 * @return the title
+	 */
+	public final String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title
+	 *            the title to set
+	 */
+	public final void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
+	 * @return the popularity
+	 */
+	public final float getPopularity() {
+		return popularity;
+	}
+
+	/**
+	 * @param popularity
+	 *            the popularity to set
+	 */
+	public final void setPopularity(float popularity) {
+		this.popularity = popularity;
+	}
+
+	/**
+	 * @return the posterPath
+	 */
+	public final String getPosterPath() {
+		return posterPath;
+	}
+
+	/**
+	 * @param posterPath
+	 *            the posterPath to set
+	 */
+	public final void setPosterPath(String posterPath) {
+		this.posterPath = posterPath;
+	}
+
+	/**
+	 * @return the overview
+	 */
+	public final String getOverview() {
+		return overview;
+	}
+
+	/**
+	 * @param overview
+	 *            the overview to set
+	 */
+	public final void setOverview(String overview) {
+		this.overview = overview;
+	}
+
+	/**
+	 * @return the releaseDate
+	 */
+	public final String getReleaseDate() {
+		return releaseDate;
+	}
+
+	/**
+	 * @param releaseDate
+	 *            the releaseDate to set
+	 */
+	public final void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	/**
+	 * @return the comment
+	 */
+	public final String getComment() {
+		return comment;
+	}
+
+	/**
+	 * @param comment
+	 *            the comment to set
+	 */
+	public final void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	@Override
+	public String toString() {
+		return String.format(
+				"Movie [id=%s, voteCount=%s, voteAverage=%s, title=%s, popularity=%s, posterPath=%s, overview=%s, comment=%s, releaseDate=%s]",
+				id, voteCount, voteAverage, title, popularity, posterPath, overview, comment, releaseDate);
+	}
 }

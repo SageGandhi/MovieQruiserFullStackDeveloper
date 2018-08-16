@@ -2,6 +2,7 @@ package edu.gandhi.prajit.moviecruiser.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import edu.gandhi.prajit.moviecruiser.MovieCruiserAppApplication;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;

@@ -2,8 +2,10 @@ package edu.gandhi.prajit.moviecruiser.services;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import edu.gandhi.prajit.moviecruiser.exception.MovieAlredayExistsException;
 import edu.gandhi.prajit.moviecruiser.exception.MovieNotFoundException;
 import edu.gandhi.prajit.moviecruiser.repository.MovieRepository;
@@ -36,11 +38,9 @@ public class DefaultMovieService implements MovieService
 		
 		final Movie optionalMovieIfExist = optionalMovie.orElseThrow( ()->new MovieNotFoundException("Unable To Update Movie, Movie Not Exists In DataBase:"+updateMovie) );
 		
-		//Set All Values:As Those Are Updated Values:For Now We Can Only Update Following 3 Value
-		Optional.ofNullable( updateMovie.getComments() ).ifPresent( optionalMovieIfExist::setComments );
-		Optional.ofNullable( updateMovie.getVoteAverage() ).ifPresent( optionalMovieIfExist::setVoteAverage );
-		Optional.ofNullable( updateMovie.getVoteCount() ).ifPresent( optionalMovieIfExist::setVoteCount );
-
+		//Set All Values:As Those Are Updated Values:For Now We Can Only Update Following Value
+		Optional.ofNullable( updateMovie.getComment() ).ifPresent( optionalMovieIfExist::setComment );
+		
 		movieRepository.save(optionalMovieIfExist);
 		return optionalMovieIfExist;
 	}

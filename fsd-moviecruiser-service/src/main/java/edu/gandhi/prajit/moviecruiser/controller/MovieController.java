@@ -1,6 +1,7 @@
 package edu.gandhi.prajit.moviecruiser.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import edu.gandhi.prajit.moviecruiser.exception.MovieAlredayExistsException;
 import edu.gandhi.prajit.moviecruiser.exception.MovieNotFoundException;
 import edu.gandhi.prajit.moviecruiser.repository.entity.Movie;
@@ -25,10 +27,9 @@ import io.swagger.annotations.ApiResponses;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/v1/movie")
-//Added For Versioning.Need To Clarify How To Do Versoning.
 public class MovieController
 {
-	public static final String MIME_JSON = "application/vnd.edu.gandhi.prajit.moviecruiser+json";
+	public static final String MIME_JSON = "application/json";
 	
 	@Autowired
 	private MovieService movieService;

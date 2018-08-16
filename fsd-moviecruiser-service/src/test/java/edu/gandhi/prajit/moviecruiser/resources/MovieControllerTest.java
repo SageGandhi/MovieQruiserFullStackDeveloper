@@ -54,8 +54,8 @@ public class MovieControllerTest
 	private Movie createMovie(int id, String name, String comments, String posterPath) {
 		Movie movie = new Movie();
 		movie.setId(id);
-		movie.setName(name);
-		movie.setComments(comments);
+		movie.setTitle(name);
+		movie.setComment(comments);
 		movie.setPosterPath(posterPath);
 		movie.setReleaseDate( LocalDate.now().toString() );
 		movie.setVoteAverage( (float)(Math.random()*100)/100);

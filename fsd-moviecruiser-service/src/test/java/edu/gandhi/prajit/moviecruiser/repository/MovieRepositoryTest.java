@@ -31,8 +31,8 @@ public class MovieRepositoryTest
 	{
 		Movie movie = new Movie();
 		movie.setId( id );
-		movie.setName( name );
-		movie.setComments( comments );
+		movie.setTitle( name );
+		movie.setComment( comments );
 		movie.setPosterPath( posterPath );
 		movie.setReleaseDate( LocalDate.now().toString() );
 		movie.setVoteAverage( (float)( Math.random() * 100 ) / 100 );
@@ -49,8 +49,8 @@ public class MovieRepositoryTest
 		movieRepository.save(createMovie( 1, "The Shawshank Redemption", "1994", "https://www.imdb.com/title/tt0111161/?ref_=adv_li_i" ));
 		final Movie movieFixture = movieRepository.findById(1).orElse(null);
 		assertThat( movieFixture).isNotNull();
-		assertThat( "The Shawshank Redemption").isEqualToIgnoringCase( movieFixture.getName());
-		assertThat( "1994").isEqualToIgnoringCase( movieFixture.getComments());
+		assertThat( "The Shawshank Redemption").isEqualToIgnoringCase( movieFixture.getTitle());
+		assertThat( "1994").isEqualToIgnoringCase( movieFixture.getComment());
 	}
 
 	@Test
@@ -58,14 +58,14 @@ public class MovieRepositoryTest
 	{
 		movieRepository.save(createMovie( 1, "The Shawshank Redemption", "1994", "https://www.imdb.com/title/tt0111161/?ref_=adv_li_i" ));
 		final Movie movieFixture = movieRepository.findById(1).orElse(null);
-		movieFixture.setVoteCount( movieFixture.getVoteCount()+25 );
+		movieFixture.setComment( "Updated" );
 		movieRepository.save(movieFixture);
 		
 		Movie movieActual = movieRepository.findById(1).orElse(null);
 		assertThat( movieActual).isNotNull();
 		
-		assertThat( "The Shawshank Redemption").isEqualToIgnoringCase( movieActual.getName());
-		assertThat(movieActual.getVoteCount()).isEqualTo( movieFixture.getVoteCount() );
+		assertThat( "The Shawshank Redemption").isEqualToIgnoringCase( movieActual.getTitle());
+		assertThat(movieActual.getComment()).isEqualTo( movieFixture.getComment() );
 	}
 
 	@Test
@@ -82,8 +82,8 @@ public class MovieRepositoryTest
 		movieRepository.save(createMovie( 1, "The Shawshank Redemption", "1994", "https://www.imdb.com/title/tt0111161/?ref_=adv_li_i" ));
 		final Movie movie = movieRepository.findById(1).orElse(null);
 		assertThat(movie).isNotNull();
-		assertThat( "The Shawshank Redemption").isEqualToIgnoringCase( movie.getName());
-		assertThat( "1994").isEqualToIgnoringCase( movie.getComments());
+		assertThat( "The Shawshank Redemption").isEqualToIgnoringCase( movie.getTitle());
+		assertThat( "1994").isEqualToIgnoringCase( movie.getComment());
 	}
 
 	@Test
