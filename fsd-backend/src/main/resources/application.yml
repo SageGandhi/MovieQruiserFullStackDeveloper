@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: ${MYSQL_MOVIE_DB_URL}
-    username: ${MYSQL_MOVIE_DB_USERNAME}
-    password: ${MYSQL_MOVIE_DB_PASSWORD}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
 #spring:
 #  datasource:
 #    driver-class-name: org.h2.Driver

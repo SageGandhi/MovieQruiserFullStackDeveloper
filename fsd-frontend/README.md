@@ -34,7 +34,6 @@ docker images -q --no-trunc
 docker pull mysql
 docker history mysql ->Layers
 
-docker run --detach --name=db-movie-cruiser --env="MYSQL_ROOT_PASSWORD=root" --publish 6033:3306 --link otherService:service mysql:5.6 
 docker ps -a
 docker rm db-movie-cruiser-->Remove Container By Name
 docker logs db-movie-cruiser
@@ -60,18 +59,14 @@ docker rmi $(docker images -q)
 docker rmi $(docker images -q -f dangling=true)
 =====================================================
 sudo docker pull mysql:latest
-Need Link To Install Docker In Linux:
 sudo docker images
 
-sudo docker run --detach --name=movie-cruiser-mysql --env="MYSQL_ROOT_PASSWORD=root" --publish 6033:3306 -v /home/ubuntu/Documents/prajitws/mysql-data:/var/lib/mysql mysql:latest
 sudo docker ps --all
 sudo docker logs <ContainerId>
-
 sudo docker ps -a
 sudo docker stop <ContainerId>
 sudo docker rm <ContainerId>
 
 sudo docker exec -it <ContainerId> bash
 mysql -uroot -proot,show databases
-
-sudo docker run --detach --name=movie-cruiser-mysql --network=host --env MYSQL_ROOT_PASSWORD=root --env MYSQL_DATABASE=MovieCruiser --env MYSQL_USER=app --env MYSQL_PASSWORD=root123  --publish 3306:3306 mysql:latest
+sudo docker run --detach --name=movie-cruiser-mysql --network=host --env MYSQL_ROOT_PASSWORD=root --env MYSQL_DATABASE=MovieCruiser --env MYSQL_USER=app_root --env MYSQL_PASSWORD=root123  --publish 3306:3306 mysql:latest
