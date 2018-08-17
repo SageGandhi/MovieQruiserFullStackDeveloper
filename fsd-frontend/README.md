@@ -20,3 +20,21 @@ ng generate component modules/movie/components/watchlist --module modules/movie/
 ng generate component modules/movie/components/tmdb-container-watchlist --module modules/movie/movie.module.ts --prefix movie
 ng generate component modules/movie/components/search-movie --module modules/movie/movie.module.ts --prefix movie
 
+#Docker
+ng build --prod
+package-container.json->Using npm init In Different Dir & npm i express --save --save-exact
+{
+  "name": "server-express-package",
+  "version": "1.0.0",
+  "description": "Used For Serving Angular Code In Production For Fsd Movie Cruiser Application",
+  "scripts": {
+    "test": "echo \"Error: No Test Specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Prajit Gandhi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.16.3"
+  }
+}
+sudo docker build -t prajit-gandhi-moviecruiser-angular .

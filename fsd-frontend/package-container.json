@@ -1,0 +1,14 @@
+{
+  "name": "server-express-package",
+  "version": "1.0.0",
+  "description": "Used For Serving Angular Code In Production For Fsd Movie Cruiser Application",
+  "scripts": {
+    "test": "echo \"Error: No Test Specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Prajit Gandhi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.16.3"
+  }
+}
