@@ -69,4 +69,6 @@ sudo docker rm <ContainerId>
 
 sudo docker exec -it <ContainerId> bash
 mysql -uroot -proot,show databases
-sudo docker run --detach --name=movie-cruiser-mysql --network=host --env MYSQL_ROOT_PASSWORD=root --env MYSQL_DATABASE=MovieCruiser --env MYSQL_USER=app_root --env MYSQL_PASSWORD=root123  --publish 3306:3306 mysql:latest
+sudo docker run --detach --name=movie-cruiser-mysql --network=host --env MYSQL_ROOT_PASSWORD=root --env MYSQL_DATABASE=MovieCruiser --env MYSQL_USER=app_root --env MYSQL_PASSWORD=root123  --publish 3306:3306 mysql:5.5
+netstat -ano|grep <PortNo>
+mysql -uroot -proot -h localhost -P 3306 --protocol tcp Connect Containerized MySql From Host
