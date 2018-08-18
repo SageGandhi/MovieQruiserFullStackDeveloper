@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./tmdb-container-watchlist.component.css']
 })
 export class TmdbContainerWatchlistComponent implements OnInit {
-  private movies:Array<Movie>;
+  public movies:Array<Movie>;
   private movieType:string;
   constructor(private movieService:TmdbMovieService,private routes:ActivatedRoute) {
     this.movies = [];

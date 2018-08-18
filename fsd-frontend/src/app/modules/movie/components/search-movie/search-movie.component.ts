@@ -8,8 +8,8 @@ import { TmdbMovieService } from '../../service/tmdb-movie.service';
   styleUrls: ['./search-movie.component.css']
 })
 export class SearchMovieComponent implements OnInit {
-  private movies: Array<Movie>;
-  private searcQuery: string;
+  public movies: Array<Movie>;
+  public searcQuery: string;
   constructor(private movieService: TmdbMovieService) { }
 
   ngOnInit() {

@@ -9,8 +9,8 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./watchlist.component.css']
 })
 export class WatchlistComponent implements OnInit {
-  private movies:Array<Movie>;
-  private inWatchListApi:boolean;
+  public movies:Array<Movie>;
+  public inWatchListApi:boolean;
   constructor(private movieService:TmdbMovieService,private snackBar:MatSnackBar) {
     this.movies = [];
     this.inWatchListApi = true;

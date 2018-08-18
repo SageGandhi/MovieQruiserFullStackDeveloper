@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class ContainerComponent implements OnInit {
   @Input()
-  private movies:Array<Movie>;
+  public movies:Array<Movie>;
   @Input()
   private inWatchListApi:boolean;
   constructor(private movieService:TmdbMovieService,private snackBar:MatSnackBar) {

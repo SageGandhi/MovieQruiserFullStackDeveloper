@@ -9,8 +9,8 @@ import { Movie } from '../../movie';
   styleUrls: ['./watchlist-update-dialog.component.css']
 })
 export class WatchlistUpdateDialogComponent implements OnInit {
-  private movie:Movie;
-  private comments:string;
+  public movie:Movie;
+  public comments:string;
 
   constructor(private snackBar:MatSnackBar,
     private movieService:TmdbMovieService,

@@ -9,9 +9,9 @@ import { WatchlistUpdateDialogComponent } from '../watchlist-update-dialog/watch
 })
 export class ThumbnailComponent implements OnInit {
   @Input()
-  private movie:Movie;
+  public movie:Movie;
   @Input()
-  private inWatchListApi:boolean;
+  public inWatchListApi:boolean;
   @Output()
   private addMovie2WatchListEmitterInChild:EventEmitter<Movie>= new EventEmitter();
   @Output()
