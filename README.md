@@ -33,3 +33,5 @@ sudo docker-compose up-->In Root Where Compose File Lives
 
 Start From Clean Slate
 sudo docker system prune -a
+Only Selected Container Started By Docker Compose
+sudo docker-compose down
