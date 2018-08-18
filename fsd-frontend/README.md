@@ -42,3 +42,5 @@ sudo docker build -t prajit-gandhi-moviecruiser-angular .
 netstat -ano|grep <PortNo>
 sudo service mysql status/sudo service mysql stop/sudo service mysql start
 docker container start <ContainerId>
+
+sudo docker run --detach --name=MovieCruiserFrontEnd --network=host --publish 4200:4200 prajit-gandhi-moviecruiser-angular

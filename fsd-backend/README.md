@@ -41,7 +41,7 @@ sudo docker run --detach --name=movie-cruiser-mysql --network=host --env MYSQL_R
 mysql -uroot -proot -h localhost -P 3306 --protocol tcp Connect Containerized MySql From Host
 sudo docker build -t prajit-gandhi-moviecruiser-springboot .
 docker images
-sudo docker run --name MovieCruiserBackEnd --network=host prajit-gandhi-moviecruiser-springboot
+sudo docker run --detach --name=MovieCruiserBackEnd --network=host --publish 8080:8080 prajit-gandhi-moviecruiser-springboot
 
 Sample Movie Request For Test:
 {
