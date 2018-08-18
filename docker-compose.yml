@@ -1,0 +1,37 @@
+version: '2.1'
+services:
+  mysql:
+    image: mysql:5.5
+    ports: 
+      - 3306:3306
+    container_name: movie-cruiser-mysql
+    network_mode: host
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: MovieCruiser
+      MYSQL_USER: app_root
+      MYSQL_PASSWORD: root123
+    healthcheck:
+      test: ['CMD','mysqladmin','ping','-h','localhost']
+      timeout: 10s
+      retries: 10
+  spring:
+    image: prajitgandhi/movie-cruiser-01:moviecruiser-springboot
+    restart: on-failure
+    network_mode: host
+    container_name: moviecruiser-springboot
+    environment: 
+      MYSQL_MOVIE_DB_URL: jdbc:mysql://localhost:3306/MovieCruiser
+      MYSQL_USER: app_root
+      MYSQL_PASSWORD: root123
+    depends_on: 
+      mysql:
+        condition: service_healthy
+    ports: 
+      - 8080:8080
+  angular:
+    image: prajitgandhi/movie-cruiser-01:moviecruiser-angular
+    network_mode: host
+    container_name: moviecruiser-angular
+    ports: 
+      - 4200:4200

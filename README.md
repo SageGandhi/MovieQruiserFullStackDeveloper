@@ -11,3 +11,25 @@ sudo docker run --detach --name=MovieCruiserBackEnd --network=host --publish 808
 
 sudo docker build -t prajit-gandhi-moviecruiser-angular .
 sudo docker run --detach --name=MovieCruiserFrontEnd --network=host --publish 4200:4200 prajit-gandhi-moviecruiser-angular
+
+sudo docker login --username=prajitgandhi --password=
+sudo docker tag <ImageId> prajitgandhi/movie-cruiser-01:<InamgeName/Tag>
+
+sudo docker tag dfac1047adc4 prajitgandhi/movie-cruiser-01:moviecruiser-angular
+
+sudo docker push prajitgandhi/movie-cruiser-01
+
+sudo docker tag dfac1047adc4 prajitgandhi/movie-cruiser-01:moviecruiser-angular
+sudo docker tag 51f74ec2b6ff prajitgandhi/movie-cruiser-01:moviecruiser-springboot
+
+sudo docker images --digests
+sudo docker rmi prajitgandhi/movie-cruiser-01@sha256:0a6d5395fdce4854beab23d8a9c72ff65e29eef4af6e0dd5dd41b552bef4462d
+sudo docker rmi prajitgandhi/movie-cruiser-01:moviecruiser-angular
+
+sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+sudo docker-compose up-->In Root Where Compose File Lives
+
+Start From Clean Slate
+sudo docker system prune -a
