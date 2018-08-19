@@ -6,8 +6,7 @@ import edu.gandhi.prajit.moviecruiser.exception.MovieAlredayExistsException;
 import edu.gandhi.prajit.moviecruiser.exception.MovieNotFoundException;
 import edu.gandhi.prajit.moviecruiser.repository.entity.Movie;
 
-public interface MovieService
-{
+public interface MovieService {
 	public void createNewMovie(final Movie movie) throws MovieAlredayExistsException;
 
 	public Movie updateMovieInformation(final Movie movie) throws MovieNotFoundException;

@@ -7,6 +7,7 @@ public class MovieNotFoundException extends Exception {
 	public MovieNotFoundException(final String message) {
 		super(message);
 	}
+
 	@Override
 	public String toString() {
 		return "MovieNotFoundException [message=" + getMessage() + "]";
