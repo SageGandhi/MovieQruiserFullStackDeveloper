@@ -34,7 +34,7 @@ import edu.gandhi.prajit.moviecruiser.services.MovieService;
 public class MovieControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
-
+	private String userId;
 	@MockBean
 	private MovieService movieService;
 	/**
@@ -45,6 +45,7 @@ public class MovieControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
+		this.userId="Prajit.Gandhi@cognizant.com";
 		this.movies = Arrays.asList(
 				createMovie(1, "The Shawshank Redemption", "1994",
 						"https://www.imdb.com/title/tt0111161/?ref_=adv_li_i"),
@@ -68,11 +69,12 @@ public class MovieControllerTest {
 	@Test
 	public void testCreateNewMovie() throws Exception {
 		final Movie movieToCreate = this.movies.get(0);
-		Mockito.doNothing().when(this.movieService).createNewMovie(movieToCreate);
+		Mockito.doNothing().when(this.movieService).createNewMovie(movieToCreate,this.userId);
 
 		this.mockMvc.perform(post("/api/v1/movie").contentType(MovieController.MIME_JSON)
+				.param("userId",this.userId)
 				.content(this.mapper.writeValueAsString(movieToCreate))).andExpect(status().isCreated());
-		verify(this.movieService, times(1)).createNewMovie(Mockito.any(Movie.class));
+		verify(this.movieService, times(1)).createNewMovie(Mockito.any(Movie.class),Mockito.anyString());
 		verifyNoMoreInteractions(this.movieService);
 	}
 
@@ -81,39 +83,40 @@ public class MovieControllerTest {
 		final Movie movieToCreate = this.movies.get(0);
 		movieToCreate.setVoteCount(movieToCreate.getVoteCount() + 1000);
 
-		Mockito.when(this.movieService.updateMovieInformation(Mockito.<Movie>any())).thenReturn(movieToCreate);
+		Mockito.when(this.movieService.updateMovieInformation(Mockito.<Movie>any(),Mockito.anyString())).thenReturn(movieToCreate);
 
 		this.mockMvc.perform(put("/api/v1/movie/{id}", 1).contentType(MovieController.MIME_JSON)
+				.param("userId",this.userId)
 				.content(this.mapper.writeValueAsString(movieToCreate))).andExpect(status().isOk());
 		// Assert On Response Body:Code_Debt
-		verify(this.movieService, times(1)).updateMovieInformation(Mockito.any(Movie.class));
+		verify(this.movieService, times(1)).updateMovieInformation(Mockito.any(Movie.class),Mockito.anyString());
 		verifyNoMoreInteractions(this.movieService);
 	}
 
 	@Test
 	public void testDeleteMovieByMovieId() throws Exception {
-		Mockito.doNothing().when(this.movieService).deleteMovieByMovieId(1);
-		this.mockMvc.perform(delete("/api/v1/movie/{id}", 1)).andExpect(status().isOk());
+		Mockito.doNothing().when(this.movieService).deleteMovieByMovieId(1,this.userId);
+		this.mockMvc.perform(delete("/api/v1/movie/{id}", 1).param("userId",this.userId)).andExpect(status().isOk());
 
-		verify(this.movieService, times(1)).deleteMovieByMovieId(1);
+		verify(this.movieService, times(1)).deleteMovieByMovieId(1,this.userId);
 		verifyNoMoreInteractions(this.movieService);
 	}
 
 	@Test
 	public void testGetMovieByMovieId() throws Exception {
-		Mockito.when(this.movieService.getMovieByMovieId(1)).thenReturn(this.movies.get(0));
-		this.mockMvc.perform(get("/api/v1/movie/{id}", 1)).andExpect(status().isOk());
+		Mockito.when(this.movieService.getMovieByMovieId(1,this.userId)).thenReturn(this.movies.get(0));
+		this.mockMvc.perform(get("/api/v1/movie/{id}", 1).param("userId",this.userId)).andExpect(status().isOk());
 		// Assert On Response Body:Code_Debt
-		verify(this.movieService, times(1)).getMovieByMovieId(1);
+		verify(this.movieService, times(1)).getMovieByMovieId(1,this.userId);
 		verifyNoMoreInteractions(this.movieService);
 	}
 
 	@Test
 	public void testGetAllMovies() throws Exception {
-		Mockito.when(this.movieService.getAllMovies()).thenReturn(this.movies);
-		this.mockMvc.perform(get("/api/v1/movie")).andExpect(status().isOk());
+		Mockito.when(this.movieService.getAllMovies(this.userId)).thenReturn(this.movies);
+		this.mockMvc.perform(get("/api/v1/movie").param("userId",this.userId)).andExpect(status().isOk());
 		// Assert On Response Body:Code_Debt
-		verify(this.movieService, times(1)).getAllMovies();
+		verify(this.movieService, times(1)).getAllMovies(this.userId);
 		verifyNoMoreInteractions(this.movieService);
 	}
 }

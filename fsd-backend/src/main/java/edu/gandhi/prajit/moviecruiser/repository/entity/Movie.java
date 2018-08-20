@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -50,6 +51,23 @@ public class Movie {
 	@Column(name = "ReleaseDate")
 	@JsonProperty("release_date")
 	private String releaseDate;
+	@Column(name = "UserId")
+	@JsonIgnore
+	private String userId;
+
+	/**
+	 * @return the userId
+	 */
+	public final String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * @param userId the userId to set
+	 */
+	public final void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	/**
 	 * @return the id
@@ -189,7 +207,7 @@ public class Movie {
 	@Override
 	public String toString() {
 		return String.format(
-				"Movie [id=%s, voteCount=%s, voteAverage=%s, title=%s, popularity=%s, posterPath=%s, overview=%s, comment=%s, releaseDate=%s]",
-				id, voteCount, voteAverage, title, popularity, posterPath, overview, comment, releaseDate);
+				"Movie [id=%s, voteCount=%s, voteAverage=%s, title=%s, popularity=%s, posterPath=%s, overview=%s, comment=%s, releaseDate=%s, userId=%s]",
+				id, voteCount, voteAverage, title, popularity, posterPath, overview, comment, releaseDate, userId);
 	}
 }

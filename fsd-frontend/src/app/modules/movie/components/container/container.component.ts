@@ -25,6 +25,10 @@ export class ContainerComponent implements OnInit {
       .subscribe((movie)=>{
         console.log(`Added To My WatchList:${JSON.stringify(movie)}`);
         this.snackBar.open(`${movie.title} Added To Your WatchList.`,'',{duration:2500});
+      },(err)=>{
+        if (err.status === 409) {
+          this.snackBar.open(`${movie.title} Already Added To Your WatchList.You Can Not Add Twice.`,'',{duration:2500});
+        }
       });
   }
   deleteFromWatchListInParent(movie){

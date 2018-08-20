@@ -25,7 +25,7 @@ import edu.gandhi.prajit.moviecruiser.repository.entity.Movie;
 public class MovieRepositoryTest {
 	@Autowired
 	private MovieRepository movieRepository;
-
+	private String userId="Prajit.Gandhi@cognizant.com";
 	private Movie createMovie(int id, String name, String comments, String posterPath) {
 		Movie movie = new Movie();
 		movie.setId(id);
@@ -35,6 +35,7 @@ public class MovieRepositoryTest {
 		movie.setReleaseDate(LocalDate.now().toString());
 		movie.setVoteAverage((float) (Math.random() * 100) / 100);
 		movie.setVoteCount((int) Math.ceil(Math.random() * 1000));
+		movie.setUserId(this.userId);
 		return movie;
 	}
 
@@ -47,25 +48,27 @@ public class MovieRepositoryTest {
 	public void testCreateNewMovie() {
 		movieRepository.save(createMovie(1, "The Shawshank Redemption", "1994",
 				"https://www.imdb.com/title/tt0111161/?ref_=adv_li_i"));
-		final Movie movieFixture = movieRepository.findById(1).orElse(null);
+		final Movie movieFixture = movieRepository.findByIdAndUserId(1,this.userId).orElse(null);
 		assertThat(movieFixture).isNotNull();
 		assertThat("The Shawshank Redemption").isEqualToIgnoringCase(movieFixture.getTitle());
 		assertThat("1994").isEqualToIgnoringCase(movieFixture.getComment());
+		assertThat(this.userId).isEqualToIgnoringCase(movieFixture.getUserId());
 	}
 
 	@Test
 	public void testUpdateMovieInformation() {
 		movieRepository.save(createMovie(1, "The Shawshank Redemption", "1994",
 				"https://www.imdb.com/title/tt0111161/?ref_=adv_li_i"));
-		final Movie movieFixture = movieRepository.findById(1).orElse(null);
+		final Movie movieFixture = movieRepository.findByIdAndUserId(1,this.userId).orElse(null);
 		movieFixture.setComment("Updated");
 		movieRepository.save(movieFixture);
 
-		Movie movieActual = movieRepository.findById(1).orElse(null);
+		Movie movieActual = movieRepository.findByIdAndUserId(1,this.userId).orElse(null);
 		assertThat(movieActual).isNotNull();
 
 		assertThat("The Shawshank Redemption").isEqualToIgnoringCase(movieActual.getTitle());
 		assertThat(movieActual.getComment()).isEqualTo(movieFixture.getComment());
+		assertThat(this.userId).isEqualToIgnoringCase(movieFixture.getUserId());
 	}
 
 	@Test
@@ -73,17 +76,18 @@ public class MovieRepositoryTest {
 		movieRepository.save(createMovie(1, "The Shawshank Redemption", "1994",
 				"https://www.imdb.com/title/tt0111161/?ref_=adv_li_i"));
 		movieRepository.deleteById(1);
-		assertThat(movieRepository.findById(1).orElse(null)).isNull();
+		assertThat(movieRepository.findByIdAndUserId(1,this.userId).orElse(null)).isNull();
 	}
 
 	@Test
 	public void testGetMovieByMovieId() {
 		movieRepository.save(createMovie(1, "The Shawshank Redemption", "1994",
 				"https://www.imdb.com/title/tt0111161/?ref_=adv_li_i"));
-		final Movie movie = movieRepository.findById(1).orElse(null);
+		final Movie movie = movieRepository.findByIdAndUserId(1,this.userId).orElse(null);
 		assertThat(movie).isNotNull();
 		assertThat("The Shawshank Redemption").isEqualToIgnoringCase(movie.getTitle());
 		assertThat("1994").isEqualToIgnoringCase(movie.getComment());
+		assertThat(this.userId).isEqualToIgnoringCase(movie.getUserId());
 	}
 
 	@Test
@@ -95,7 +99,7 @@ public class MovieRepositoryTest {
 		this.movieRepository.save(
 				createMovie(3, " The Dark Knight", "2008", "https://www.imdb.com/title/tt0468569/?ref_=adv_li_i"));
 
-		final List<Movie> movieList = movieRepository.findAll();
+		final List<Movie> movieList = movieRepository.findByUserId(this.userId);
 		assertThat(movieList).isNotNull();
 		assertThat(movieList).hasSize(3);
 	}

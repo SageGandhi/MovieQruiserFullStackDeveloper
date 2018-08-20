@@ -48,8 +48,8 @@ export class TmdbMovieService {
 
   transformPosterPath(movies: Array<Movie>): Array<Movie> {
     movies.map(movieTemp => {
-      console.log(`Movie:${JSON.stringify(movieTemp)}`);
-      console.log(`PosterPath:${this.imageBaseUri}${movieTemp['poster_path']}`);
+      // console.log(`Movie:${JSON.stringify(movieTemp)}`);
+      // console.log(`PosterPath:${this.imageBaseUri}${movieTemp['poster_path']}`);
       movieTemp['poster_path'] = `${this.imageBaseUri}${movieTemp['poster_path']}`;
       return movieTemp;
     });
