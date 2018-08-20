@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.Authorization;
 
 @CrossOrigin
 @RestController
@@ -34,7 +35,7 @@ public class MovieController {
 	private MovieService movieService;
 
 	@PostMapping(consumes = { MIME_JSON }, produces = { MIME_JSON })
-	@ApiOperation(value = "Create New Movie", notes = "Used For Creating New Movie", nickname = "createNewMovie")
+	@ApiOperation(value = "Create New Movie", notes = "Used For Creating New Movie", nickname = "createNewMovie",authorizations= {@Authorization("Authorization")})
 	@ApiResponses({ @ApiResponse(code = 201, message = "Movie Created"),
 			@ApiResponse(code = 409, message = "Movie Already Exists In Database") })
 	public ResponseEntity<?> createNewMovie(
@@ -49,7 +50,7 @@ public class MovieController {
 	}
 
 	@PutMapping(path = "/{id}", consumes = { MIME_JSON }, produces = { MIME_JSON })
-	@ApiOperation(value = "Update Existing Movie", notes = "Used For Updating Movie Information", nickname = "updateMovieInformation")
+	@ApiOperation(value = "Update Existing Movie", notes = "Used For Updating Movie Information", nickname = "updateMovieInformation",authorizations= {@Authorization("Authorization")})
 	@ApiResponses({ @ApiResponse(code = 200, message = "Movie Information Updated"),
 			@ApiResponse(code = 409, message = "Movie Not Exists In Database") })
 	public ResponseEntity<?> updateMovieInformation(
@@ -66,7 +67,7 @@ public class MovieController {
 	}
 
 	@DeleteMapping(path = "/{id}")
-	@ApiOperation(value = "Delete Existing Movie", notes = "Used For Deleting Movie Information", nickname = "deleteMovieByMovieId")
+	@ApiOperation(value = "Delete Existing Movie", notes = "Used For Deleting Movie Information", nickname = "deleteMovieByMovieId",authorizations= {@Authorization("Authorization")})
 	@ApiResponses({ @ApiResponse(code = 200, message = "Movie Information Deleted"),
 			@ApiResponse(code = 404, message = "Movie Not Exists In Database") })
 	public ResponseEntity<String> deleteMovieByMovieId(
@@ -81,7 +82,7 @@ public class MovieController {
 	}
 
 	@GetMapping(path = "/{id}", produces = { MIME_JSON })
-	@ApiOperation(value = "Get Existing Movie", notes = "Used For Get Movie Information", nickname = "getMovieByMovieId")
+	@ApiOperation(value = "Get Existing Movie", notes = "Used For Get Movie Information", nickname = "getMovieByMovieId",authorizations= {@Authorization("Authorization")})
 	@ApiResponses({ @ApiResponse(code = 200, message = "Movie Information Retrieved"),
 			@ApiResponse(code = 404, message = "Movie Not Exists In Database") })
 	public ResponseEntity<?> getMovieByMovieId(
@@ -95,7 +96,7 @@ public class MovieController {
 	}
 
 	@GetMapping(produces = { MIME_JSON })
-	@ApiOperation(value = "Get All Existing Movie", notes = "Used For Get All Movie Information", nickname = "getAllMovies")
+	@ApiOperation(value = "Get All Existing Movie", notes = "Used For Get All Movie Information", nickname = "getAllMovies",authorizations= {@Authorization("Authorization")})
 	@ApiResponses({ @ApiResponse(code = 200, message = "All Movie Information Retrieved") })
 	public ResponseEntity<List<Movie>> getAllMovies() {
 		return ResponseEntity.ok(movieService.getAllMovies());
