@@ -1,16 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { MovieModule } from './modules/movie/movie.module';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+import { MovieModule } from './modules/movie/movie.module';
 import { MaterialModule } from './modules/material/material.module';
-import { FormsModule } from '@angular/forms';
+import { AuthenticationModule } from './modules/authentication/authentication.module';
 
 const movieRoutes: Routes = [
   {
     path: '',
-    redirectTo: '/movies/popular',
+    redirectTo: 'login',
     pathMatch: 'full'
   }
 ];
@@ -24,6 +26,7 @@ const movieRoutes: Routes = [
     HttpClientModule,
     MovieModule,
     MaterialModule,
+    AuthenticationModule,
     RouterModule.forRoot(movieRoutes)
   ],
   providers: [],

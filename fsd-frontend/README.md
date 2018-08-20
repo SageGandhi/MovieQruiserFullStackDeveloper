@@ -44,3 +44,10 @@ sudo service mysql status/sudo service mysql stop/sudo service mysql start
 docker container start <ContainerId>
 
 sudo docker run --detach --name=MovieCruiserFrontEnd --network=host --publish 4200:4200 prajit-gandhi-moviecruiser-angular
+
+ng generate module modules/authentication
+ng generate module modules/authentication-router
+ng generate component modules/authentication/components/register --module modules/authentication/authentication.module.ts --prefix auth
+ng generate component modules/authentication/components/login --module modules/authentication/authentication.module.ts --prefix auth
+ng generate component modules/authentication/components/logout --module modules/authentication/authentication.module.ts --prefix auth
+ng generate service modules/authentication/service/authentication --module modules/authentication/authentication.module.ts
