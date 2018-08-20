@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       }else{
         this.snackBar.open(`UserId ${user.userId} Unable To Login Successfully. `, '', { duration: 2500 })
           .afterDismissed().subscribe(() => {
-            console.log(`Snackbar Dismissed,Routing To Popular Page.`);
+            console.log(`Snackbar Dismissed,Routing To Login Page.`);
             this.router.navigate(['/login']);
         });
       }

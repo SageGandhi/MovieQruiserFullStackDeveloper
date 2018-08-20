@@ -9,9 +9,11 @@ export class AuthGuardService implements CanActivate{
 
   constructor(private router:Router,private authService:AuthenticationService) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-    if(this.authService.isTokenExpired()){
+    console.log('getTokenFromLocalStorage'+(!!this.authService.getTokenFromLocalStorage()));
+    if(!this.authService.getTokenFromLocalStorage()){
       this.router.navigate(['/login']);
+      return false;
     }
-    return this.authService.isTokenExpired();
+    return true;
   }
 }

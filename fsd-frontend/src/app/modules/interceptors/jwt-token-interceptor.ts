@@ -8,9 +8,9 @@ export class JwtTokenInterceptor implements HttpInterceptor{
 
   }
   intercept(request:HttpRequest<any>,next:HttpHandler){
-    console.log(`Intercepting Request:Before:${JSON.stringify(request)}`);
-    request = request.clone({setHeaders:{Authorization:this.authService.getTokenFromLocalStorage()}});
-    console.log(`Intercepting Request:After:${JSON.stringify(request)}`);
+    if(this.authService.getTokenFromLocalStorage()){
+      request = request.clone({setHeaders:{Authorization:this.authService.getTokenFromLocalStorage()}});
+    }    
     return next.handle(request);
   }
 }
