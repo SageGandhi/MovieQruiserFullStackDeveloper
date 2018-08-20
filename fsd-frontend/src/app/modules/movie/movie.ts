@@ -1,5 +1,3 @@
-import { MovieImage } from "./movie-image";
-
 export interface Movie {
   vote_count: number;
   vote_average: number;
