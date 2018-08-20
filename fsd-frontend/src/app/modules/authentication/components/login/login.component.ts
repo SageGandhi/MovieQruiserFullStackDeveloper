@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
     this.authService.login(user).subscribe(response => {
       console.log(`Response Received After Login:${JSON.stringify(response)}`);
       if (response['JWTTOKEN']) {
-        localStorage.setItem('JWTTOKEN', `Bearer ${response['JWTTOKEN']}`);
-        localStorage.setItem('UserId', user.userId);
+        this.authService.setTokenToLocalStorage(response['JWTTOKEN']);
+        this.authService.setUserIdToLocalStorage(user.userId);
         this.snackBar.open(`UserId ${user.userId} LoggedIn Successfully. `, '', { duration: 2500 })
           .afterDismissed().subscribe(() => {
             console.log(`Snackbar Dismissed,Routing To Popular Page.`);
