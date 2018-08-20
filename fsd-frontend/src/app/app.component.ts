@@ -5,5 +5,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public applicationName:string ='MovieCruiser';
+  public applicationName: string = 'MovieCruiser';
+  public localStorageItem(id: string): string {
+    return localStorage.getItem(id);
+  }
 }

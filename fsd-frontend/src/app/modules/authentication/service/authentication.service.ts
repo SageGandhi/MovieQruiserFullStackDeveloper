@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable()
 export class AuthenticationService {
-  private authServiceBaseUri: string = "http://localhost:8080/api/v1/auth/user";
+  private authServiceBaseUri: string = "http://localhost:9080/api/v1/auth/user";
   private authServiceRegisterUri: string;
   private authServiceLoginUri: string;
   private header: any;
@@ -46,6 +46,7 @@ export class AuthenticationService {
     console.log(`Token ${token}`);
     if(token  && token.split(' ')[1]){
       const isExpired = this.jwtHelperService.isTokenExpired(token.split(' ')[1]);
+      console.log(`Token Is Expired${isExpired}`);
       return isExpired;
     }
     return false;
