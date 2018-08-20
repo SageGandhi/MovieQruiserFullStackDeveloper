@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { TmdbMovieService } from './service/tmdb-movie.service';
 import { ContainerComponent } from './components/container/container.component';
 import { MovieRouterModule } from '../movie-router/movie-router.module';
@@ -9,7 +11,6 @@ import { MaterialModule } from '../material/material.module';
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { TmdbContainerWatchlistComponent } from './components/tmdb-container-watchlist/tmdb-container-watchlist.component';
 import { WatchlistUpdateDialogComponent } from './components/watchlist-update-dialog/watchlist-update-dialog.component';
-import { FormsModule } from '@angular/forms';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { JwtTokenInterceptor } from '../interceptors/jwt-token-interceptor';
 @NgModule({

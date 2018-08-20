@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { MovieModule } from './modules/movie/movie.module';
 import { MaterialModule } from './modules/material/material.module';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
+import { AuthGuardService } from './modules/authentication/service/auth-guard.service';
 
 const movieRoutes: Routes = [
   {
@@ -29,7 +30,7 @@ const movieRoutes: Routes = [
     AuthenticationModule,
     RouterModule.forRoot(movieRoutes)
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
