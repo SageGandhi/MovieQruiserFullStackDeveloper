@@ -35,3 +35,32 @@ Start From Clean Slate
 sudo docker system prune -a
 Only Selected Container Started By Docker Compose
 sudo docker-compose down
+=====================================================Steps Revisited===============================================
+npm install->ng build --prod->mvn clean install->sudo docker ps --all
+sudo docker login --username=prajitgandhi --password=***********
+
+sudo docker build -t moviecruiser-fsd-frontend .
+sudo docker images
+sudo docker tag 6df74b683d56 prajitgandhi/movie-cruiser-01:moviecruiser-fsd-frontend
+sudo docker push prajitgandhi/movie-cruiser-01
+
+sudo docker build -t moviecruiser-fsd-backend .
+sudo docker images
+sudo docker tag 6825be3d49fd prajitgandhi/movie-cruiser-01:moviecruiser-fsd-backend
+sudo docker push prajitgandhi/movie-cruiser-01
+
+sudo docker build -t fsd-moviecruiser-authenticator-service .
+sudo docker images
+sudo docker tag 429cd57b07bb prajitgandhi/movie-cruiser-01:fsd-moviecruiser-authenticator-service
+sudo docker push prajitgandhi/movie-cruiser-01
+
+sudo service mysql stop
+sudo service mysql status
+netstat -ano|grep 8080 
+netstat -ano|grep 9080 
+netstat -ano|grep 3306 
+netstat -ano|grep 4200
+
+sudo docker-compose up --build
+sudo docker-compose down
+sudo docker system prune -a
