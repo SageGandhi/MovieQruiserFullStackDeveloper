@@ -16,10 +16,10 @@ services:
       timeout: 10s
       retries: 10
   spring:
-    image: prajitgandhi/movie-cruiser-01:moviecruiser-springboot
+    image: prajitgandhi/movie-cruiser-01:moviecruiser-fsd-backend
     restart: on-failure
     network_mode: host
-    container_name: moviecruiser-springboot
+    container_name: moviecruiser-fsd-backend
     environment: 
       MYSQL_MOVIE_DB_URL: jdbc:mysql://localhost:3306/MovieCruiser
       MYSQL_USER: app_root
@@ -29,9 +29,23 @@ services:
         condition: service_healthy
     ports: 
       - 8080:8080
-  angular:
-    image: prajitgandhi/movie-cruiser-01:moviecruiser-angular
+  spring:
+    image: prajitgandhi/movie-cruiser-01:fsd-moviecruiser-authenticator-service
+    restart: on-failure
     network_mode: host
-    container_name: moviecruiser-angular
+    container_name: fsd-moviecruiser-authenticator-service
+    environment: 
+      MYSQL_MOVIE_DB_URL: jdbc:mysql://localhost:3306/MovieCruiser
+      MYSQL_USER: app_root
+      MYSQL_PASSWORD: root123
+    depends_on: 
+      mysql:
+        condition: service_healthy
+    ports: 
+      - 9080:9080
+  angular:
+    image: prajitgandhi/movie-cruiser-01:moviecruiser-fsd-frontend
+    network_mode: host
+    container_name: moviecruiser-fsd-frontend
     ports: 
       - 4200:4200
