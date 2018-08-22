@@ -19,7 +19,9 @@ describe('AppComponent Span & Component', () => {
         FormsModule, 
         HttpModule, 
         MaterialModule
-      ]
+      ],
+      providers:[],
+      schemas:[NO_ERRORS_SCHEMA]
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.debugElement.componentInstance;    
