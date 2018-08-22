@@ -10,7 +10,7 @@
     </div>
     <div class="form-group">
       <label for="userId">UserId</label>
-      <input type="text" formControlName="userId" class="form-control" placeholder="Provide User Id,Probably Email" matInput required
+      <input type="email" formControlName="userId" class="form-control" placeholder="Provide User Id,Probably Email" matInput required
         [ngClass]="{ 'is-invalid': submitted && registrationField.userId.errors }" />
       <div *ngIf="submitted && registrationField.userId.errors" class="invalid-feedback">
         <div *ngIf="registrationField.userId.errors.required">UserId is required</div>
