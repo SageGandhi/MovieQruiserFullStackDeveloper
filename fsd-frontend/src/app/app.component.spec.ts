@@ -1,29 +1,36 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MaterialModule } from './modules/material/material.module';
 
-describe('AppComponent', () => {
+describe('AppComponent Span & Component', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
-      imports: [RouterTestingModule, FormsModule, HttpModule, MaterialModule]
+      imports: [
+        RouterTestingModule, 
+        FormsModule, 
+        HttpModule, 
+        MaterialModule
+      ]
     }).compileComponents();
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.debugElement.componentInstance;    
   }));
+
   it('Should Create The App', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   }));
   it('Should Render Application Name In A Span Tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
+    fixture.detectChanges();//Application Name Will Be Detected
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('span').textContent).toContain('MovieCruiser');    
+    expect(compiled.querySelector('span').textContent).toContain('MovieCruiser');
   }));
 });
