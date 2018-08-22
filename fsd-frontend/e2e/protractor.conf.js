@@ -7,14 +7,12 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    'browserName': 'chrome',
+    'browserName': 'firefox',
     chromeOptions: {
       args: ["--headless",
-        "--disable-gpu",
         "--window-size=1024x768",
         "no-sandbox",
-        '--disable-web-security',
-        '--disable-dev-shm-usage'
+        '--disable-web-security'
       ]
     }
   },
@@ -28,7 +26,7 @@ exports.config = {
   },
   onPrepare() {
     require('ts-node').register({
-      project: require('path').join(__dirname, './e2e/tsconfig.e2e.json')
+      project: require('path').join(__dirname, './tsconfig.e2e.json')
     });
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
     jasmine.getEnv().addReporter(new JasmineReporter.JUnitXmlReporter({
