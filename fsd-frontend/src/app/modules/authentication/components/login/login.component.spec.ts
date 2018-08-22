@@ -26,15 +26,14 @@ describe('LoginComponent Unit Test', () => {
   beforeEach(async()=>{
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('LoginComponent Is Truthy',()=>{
-    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 
   it("Should Have 1 Input Type Email,1 Input TYpe Password & 2 button",()=>{
-    fixture.detectChanges();
     expect(fixture.debugElement.query(By.css('.test-register-button'))).toBeTruthy();
     expect(fixture.debugElement.query(By.css('input[type=email]'))).toBeTruthy();
     expect(fixture.debugElement.query(By.css('input[type=password]'))).toBeTruthy();
