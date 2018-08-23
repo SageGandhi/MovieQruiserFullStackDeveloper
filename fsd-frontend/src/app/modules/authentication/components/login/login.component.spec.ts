@@ -15,7 +15,7 @@ describe('LoginComponent:', () => {
   let testBedAuthService: AuthenticationService;
   let componentAuthService: AuthenticationService;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
       providers: [AuthenticationService],
@@ -26,15 +26,15 @@ describe('LoginComponent:', () => {
       LoginComponent,
       {set: {providers: [{provide: MockAuthenticationService, useClass: AuthenticationService}]}}
   ).compileComponents();
-  }));
+  });
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     testBedAuthService = TestBed.get(AuthenticationService);
     componentAuthService = fixture.debugElement.injector.get(AuthenticationService);
     fixture.detectChanges();
-  }));
+  });
 
   it('LoginComponent Is Truthy', () => {
     expect(component).toBeTruthy();

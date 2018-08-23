@@ -9,7 +9,7 @@ import { MaterialModule } from './modules/material/material.module';
 describe('AppComponent:', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
@@ -25,14 +25,14 @@ describe('AppComponent:', () => {
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.debugElement.componentInstance;
-  }));
+  });
 
-  it('Should Create The App', async(() => {
+  it('Should Create The App', () => {
     expect(component).toBeTruthy();
-  }));
-  it('Should Render Application Name In A Span Tag', async(() => {
+  });
+  it('Should Render Application Name In A Span Tag', () => {
     fixture.detectChanges();//Application Name Will Be Detected
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('span').textContent).toContain('MovieCruiser');
-  }));
+  });
 });

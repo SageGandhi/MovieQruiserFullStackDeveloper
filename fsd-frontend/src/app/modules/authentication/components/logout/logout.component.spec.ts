@@ -13,7 +13,7 @@ describe('LogoutComponent:', () => {
   let component: LogoutComponent;
   let fixture: ComponentFixture<LogoutComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [LogoutComponent],
       providers: [AuthenticationService],
@@ -23,13 +23,13 @@ describe('LogoutComponent:', () => {
           {path: 'login', component: LoginComponentFixture}
         ])]
     }).compileComponents();
-  }));
+  });
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     fixture = TestBed.createComponent(LogoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('LogoutComponent Is Truthy', () => {
     expect(component).toBeTruthy();
