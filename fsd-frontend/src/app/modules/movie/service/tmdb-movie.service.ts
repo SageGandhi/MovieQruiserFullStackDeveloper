@@ -11,10 +11,6 @@ export class TmdbMovieService {
   private apiKeyQueryString: string;
   private apiKey: string;
   private baseWishlistUri: string;
-  private createWishlistUri: string;
-  private getAllWishlistUri: string;
-  private updateWishlistUri: string;
-  private deleteWishlistUri:string;
   private movieSearchUri:string;
   //https://raw.githubusercontent.com/mlabouardy/moviedb/master/moviedb_test.go
 
@@ -22,15 +18,6 @@ export class TmdbMovieService {
     this.apiKey = '5fdf2806647c21ec8d2d34b7e4e6b0a1';
     // this.baseWishlistUri = 'http://localhost:3000/movie';
     this.baseWishlistUri = 'http://localhost:8080/api/v1/movie';
-
-    // this.createWishlistUri = this.baseWishlistUri + "/movies";
-    this.createWishlistUri = this.baseWishlistUri;
-    // this.getAllWishlistUri = this.baseWishlistUri + "/movies";
-    this.getAllWishlistUri = this.baseWishlistUri;
-    // this.updateWishlistUri = this.baseWishlistUri + "/movies";
-    this.updateWishlistUri = this.baseWishlistUri;
-    // this.deleteWishlistUri = this.baseWishlistUri + "/movies";
-    this.deleteWishlistUri = this.baseWishlistUri;
     this.imageBaseUri = "https://image.tmdb.org/t/p/w185_and_h278_bestv2";
     this.tmdbEndpoint = "https://api.themoviedb.org/3/movie/";
     this.movieSearchUri = 'https://api.themoviedb.org/3/search/movie';
@@ -59,20 +46,20 @@ export class TmdbMovieService {
     return movies['results'];
   }
   addMovieToWishList(movie: Movie):Observable<Movie>{
-    console.log("addMovieToWishList: ${this.createWishlistUri}",JSON.stringify(movie));
+    console.log("addMovieToWishList: ${this.baseWishlistUri}",JSON.stringify(movie));
     const headers = new HttpHeaders({'Content-Type':'application/json'});
-    return this.http.post<Movie>(this.createWishlistUri, movie,{headers:headers}).pipe(retry(3));
+    return this.http.post<Movie>(this.baseWishlistUri, movie,{headers:headers}).pipe(retry(3));
   }
   getAllMoviesFromExistingWishList():Observable<Array<Movie>> {
     const headers = new HttpHeaders({'Content-Type':'application/json'});
-    return this.http.get<Array<Movie>>(this.getAllWishlistUri,{headers:headers}).pipe(retry(3));
+    return this.http.get<Array<Movie>>(this.baseWishlistUri,{headers:headers}).pipe(retry(3));
   }
   deleteMovieFromWatchList(movie:Movie):Observable<string>{
-    return this.http.delete(`${this.deleteWishlistUri}/${movie.id}`,{responseType:'text'}).pipe(retry(3));
+    return this.http.delete(`${this.baseWishlistUri}/${movie.id}`,{responseType:'text'}).pipe(retry(3));
   }
   updateMovieFromWatchList(movie: Movie):Observable<string>{
     const headers = new HttpHeaders({'Content-Type':'application/json'});
-    return this.http.put<string>(`${this.updateWishlistUri}/${movie.id}`,movie,{headers:headers,responseType:'json'}).pipe(retry(3));
+    return this.http.put<string>(`${this.baseWishlistUri}/${movie.id}`,movie,{headers:headers,responseType:'json'}).pipe(retry(3));
   }
   searchByText(searchText:string):Observable<Array<Movie>>{
     let searchUri = `${this.movieSearchUri}?${this.apiKeyQueryString}&language=en-US&page=1&include_adult=false&query=${searchText}`;
