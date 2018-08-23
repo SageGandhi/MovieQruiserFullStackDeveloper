@@ -1,4 +1,4 @@
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture,inject } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from './login.component';
@@ -8,10 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { By } from "@angular/platform-browser";
 
 class RegisterComponentFixture { }
-
+class MockAuthenticationService extends AuthenticationService{}
 describe('LoginComponent Unit Test', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let testBedAuthService: AuthenticationService;
+  let componentAuthService: AuthenticationService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,12 +22,17 @@ describe('LoginComponent Unit Test', () => {
       imports: [MaterialModule, FormsModule, HttpClientModule,
         RouterTestingModule.withRoutes([{path: 'register', component: RegisterComponentFixture}]
       )]
-    }).compileComponents();
+    }).overrideComponent(
+      LoginComponent,
+      {set: {providers: [{provide: MockAuthenticationService, useClass: AuthenticationService}]}}
+  ).compileComponents();
   }));
 
   beforeEach(async(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+    testBedAuthService = TestBed.get(AuthenticationService);
+    componentAuthService = fixture.debugElement.injector.get(AuthenticationService);
     fixture.detectChanges();
   }));
 
@@ -33,13 +40,20 @@ describe('LoginComponent Unit Test', () => {
     expect(component).toBeTruthy();
   });
 
-  it("Should Have 1 Input Type Email,1 Input TYpe Password & 2 button", () => {
+  it("Should Have 1 Input Type Email,1 Input Type Password & 2 button", () => {
     expect(fixture.debugElement.query(By.css('.test-register-button'))).toBeTruthy();
     expect(fixture.debugElement.query(By.css('input[type=email]'))).toBeTruthy();
     expect(fixture.debugElement.query(By.css('input[type=password]'))).toBeTruthy();
     expect(fixture.debugElement.query(By.css('.test-login-button'))).toBeTruthy();
   });
+
+  it('Service Injected Via inject(...) and TestBed.get(...) Should Be The Same Instance',
+      inject([AuthenticationService], (injectService: AuthenticationService) => {
+        expect(injectService).toBe(testBedAuthService);
+      })
+  );
+
   it('Service Injected Via Component Should Be Instance Of AuthenticationService', () => {
-    expect(TestBed.get(AuthenticationService) instanceof AuthenticationService).toBeTruthy();
+    expect(testBedAuthService instanceof AuthenticationService).toBeTruthy();
   });
 });
