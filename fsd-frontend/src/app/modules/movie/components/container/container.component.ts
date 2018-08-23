@@ -24,10 +24,10 @@ export class ContainerComponent implements OnInit {
     this.movieService.addMovieToWishList(movie)
       .subscribe((movie)=>{
         console.log(`Added To My WatchList:${JSON.stringify(movie)}`);
-        this.snackBar.open(`${movie.title} Added To Your WatchList.`,'',{duration:2500});
+        this.snackBar.open(`${movie.title} Added To Your WatchList.`,'',{duration:1000});
       },(err)=>{
         if (err.status === 409) {
-          this.snackBar.open(`${movie.title} Already Added To Your WatchList.You Can Not Add Twice.`,'',{duration:2500});
+          this.snackBar.open(`${movie.title} Already Added To Your WatchList.You Can Not Add Twice.`,'',{duration:1000});
         }
       });
   }
@@ -35,7 +35,7 @@ export class ContainerComponent implements OnInit {
     this.movies=this.movies.filter(item=>item.id!==movie.id);
     this.movieService.deleteMovieFromWatchList(movie).subscribe((text)=>{
       console.log(`Deleted From My WatchList:${JSON.stringify(movie)}`);
-      this.snackBar.open(`${movie.title} Removed From Your WatchList.`,'',{duration:2500});
+      this.snackBar.open(`${movie.title} Removed From Your WatchList.`,'',{duration:1000});
     });
   }
 }

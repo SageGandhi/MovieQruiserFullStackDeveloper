@@ -34,7 +34,7 @@ export class ThumbnailComponent implements OnInit {
       data:{obj:this.movie,actionType:actionType}
     }).afterClosed().subscribe(result=>{
       console.log(`Closing WatchList Update Dialog.${result}`);
-      this.snackBar.open(`${this.movie.title} Comment Is Updated In Your WatchList.`,'',{duration:2500});
+      this.snackBar.open(`${this.movie.title} Comment Is Updated In Your WatchList.`,'',{duration:1000});
     });
   }
 }

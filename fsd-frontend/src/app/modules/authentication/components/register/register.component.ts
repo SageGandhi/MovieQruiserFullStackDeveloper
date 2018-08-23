@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
     console.log(`To Be Registered User:${JSON.stringify(user)}`);
     this.authService.register(user).subscribe(response => {
       console.log(`Response Received After Registration:${JSON.stringify(response)}`);
-      this.snackBar.open(`UserId ${user.userId} Registered Successfully. `, '', { duration: 2500 })
+      this.snackBar.open(`UserId ${user.userId} Registered Successfully. `, '', { duration: 1000 })
         .afterDismissed().subscribe(() => {
           console.log(`Snackbar Dismissed,Routing To Login Page.`);
           this.router.navigate(['/login']);
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
       //"name":"HttpErrorResponse","message":"Http failure response for http://localhost:8080/api/v1/auth/user/register: 409 OK",
       //"error":"User Registration Error User With Id Prajit.Gandhi Already Exists."}
       if (err.status === 409) {
-        this.snackBar.open(`${err.error}`, '', { duration: 2500 });
+        this.snackBar.open(`${err.error}`, '', { duration: 1000 });
       }
     });
     return false;
