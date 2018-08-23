@@ -1,27 +1,23 @@
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ContainerComponent } from './container.component';
-import { TmdbMovieService } from '../../service/tmdb-movie.service';
 import { MaterialModule } from '../../../material/material.module';
 import { ThumbnailComponent } from 'src/app/modules/movie/components/thumbnail/thumbnail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Movie } from 'src/app/modules/movie/movie';
 
-describe('ContainerComponent:', () => {
-	let component: ContainerComponent;
-	let fixture: ComponentFixture<ContainerComponent>;
-	let service:TmdbMovieService;
+describe('ThumbnailComponent:', () => {
+	let component: ThumbnailComponent;
+	let fixture: ComponentFixture<ThumbnailComponent>;
+
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			declarations: [ContainerComponent, ThumbnailComponent],
-			imports: [RouterTestingModule, MaterialModule,HttpClientModule],
-			providers: [TmdbMovieService]
+			declarations: [ThumbnailComponent],
+			imports: [RouterTestingModule, MaterialModule,HttpClientModule]
 		}).compileComponents();
 	});
 	beforeEach(() => {
-		fixture = TestBed.createComponent(ContainerComponent);
+		fixture = TestBed.createComponent(ThumbnailComponent);
 		component = fixture.componentInstance;
-		service = TestBed.get(TmdbMovieService);
 		let movieAvengers:Movie = {
 			"id": 299536,
 			"vote_count": 6836,
@@ -33,10 +29,11 @@ describe('ContainerComponent:', () => {
 			"comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 			"release_date": "2018-04-25"
 		  };
-		component.movies=[movieAvengers];
+    component.movie=movieAvengers;
+    component.inWatchListApi=true;
 	});
 
-	it('ContainerComponent Is Truthy',()=>{
+	it('ThumbnailComponent Is Truthy',()=>{
 		expect(component).toBeTruthy();
 	});
 })
