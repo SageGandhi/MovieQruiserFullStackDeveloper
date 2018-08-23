@@ -24,7 +24,7 @@ class MockAuthenticationService extends AuthenticationService {
     return true;
   }
 }
-describe("AuthGuardService Test", () => {
+describe("AuthGuardService:", () => {
   let service: AuthGuardService;
   let mockRouterStateSnapshot: RouterStateSnapshot = jasmine.createSpyObj<RouterStateSnapshot>("RouterStateSnapshot", ['toString']);
   let activatedRouteSnapshot: ActivatedRouteSnapshot = jasmine.createSpyObj<ActivatedRouteSnapshot>("ActivatedRouteSnapshot", ['toString']);;

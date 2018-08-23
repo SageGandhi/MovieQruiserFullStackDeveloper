@@ -6,7 +6,7 @@ import { Response, ResponseOptions, XHRBackend } from "@angular/http";
 import { MockBackend } from "@angular/http/testing";
 import { HttpClientModule } from "@angular/common/http";
 
-describe("AuthenticationService Test", () => {
+describe("AuthenticationService:", () => {
   let service: AuthenticationService;
   let injector: TestBed;
   let jwt: JwtHelperService = jasmine.createSpyObj<JwtHelperService>("JwtHelperService", ['toString']);

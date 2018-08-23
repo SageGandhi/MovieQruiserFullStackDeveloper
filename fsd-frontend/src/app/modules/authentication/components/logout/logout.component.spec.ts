@@ -9,7 +9,7 @@ import { LogoutComponent } from './logout.component';
 
 class LoginComponentFixture { }
 
-describe('LogoutComponent Unit Test', () => {
+describe('LogoutComponent:', () => {
   let component: LogoutComponent;
   let fixture: ComponentFixture<LogoutComponent>;
 

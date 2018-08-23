@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MaterialModule } from './modules/material/material.module';
 
-describe('AppComponent Span & Component', () => {
+describe('AppComponent:', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   beforeEach(async(() => {
@@ -15,16 +15,16 @@ describe('AppComponent Span & Component', () => {
         AppComponent
       ],
       imports: [
-        RouterTestingModule, 
-        FormsModule, 
-        HttpModule, 
+        RouterTestingModule,
+        FormsModule,
+        HttpModule,
         MaterialModule
       ],
       providers:[],
       schemas:[NO_ERRORS_SCHEMA]
     }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
-    component = fixture.debugElement.componentInstance;    
+    component = fixture.debugElement.componentInstance;
   }));
 
   it('Should Create The App', async(() => {

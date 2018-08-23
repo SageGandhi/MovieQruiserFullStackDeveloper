@@ -9,7 +9,7 @@ import { By } from "@angular/platform-browser";
 
 class RegisterComponentFixture { }
 class MockAuthenticationService extends AuthenticationService{}
-describe('LoginComponent Unit Test', () => {
+describe('LoginComponent:', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let testBedAuthService: AuthenticationService;

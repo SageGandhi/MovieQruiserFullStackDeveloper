@@ -9,7 +9,7 @@ import { LogoutComponent } from '../logout/logout.component';
 
 class LoginComponentFixture { }
 class MockAuthenticationService extends AuthenticationService{}
-describe('LoginComponent Unit Test', () => {
+describe('LoginComponent:', () => {
   let component: LogoutComponent;
   let fixture: ComponentFixture<LogoutComponent>;
   let testBedAuthService: AuthenticationService;
