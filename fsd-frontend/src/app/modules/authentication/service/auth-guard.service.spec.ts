@@ -43,7 +43,7 @@ describe("AuthGuardService Test", () => {
     service = TestBed.get(AuthGuardService);
   });
 
-  it('Should Allow User To Overcome The Guard For Whatever Reasons',
+  it('Should Allow User To Overcome The Guard For Existing JwtToken',
     inject([AuthGuardService], (guard: AuthGuardService) => {
       let fixture = TestBed.createComponent(RouterComponent);
       expect(guard.canActivate(activatedRouteSnapshot, mockRouterStateSnapshot)).toBeTruthy();
