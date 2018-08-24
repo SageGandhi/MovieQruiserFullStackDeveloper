@@ -2,10 +2,10 @@
 <div mat-dialog-content>
   <p>Please Enter Your Comment </p>
   <mat-form-field>
-    <input matInput [(ngModel)]="comments">
+    <input matInput class="watchListMovieComment" [(ngModel)]="comments">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)="updateMovieComment()" cdkFocusInitial>Update</button>
+  <button mat-button class="watchListMovieCommentButtonUpdate" (click)="updateMovieComment()" cdkFocusInitial>Update</button>
 </div>

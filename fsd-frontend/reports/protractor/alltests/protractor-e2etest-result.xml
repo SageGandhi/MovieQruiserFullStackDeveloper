@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites disabled="0" errors="0" failures="0" tests="1" time="14.886">
- <testsuite name="workspace-project App" timestamp="2018-08-22T19:03:37" hostname="localhost" time="14.886" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="workspace-project App" name="Should Display Movie Cruiser Application As Title" time="14.883" />
+<testsuites disabled="0" errors="0" failures="0" tests="12" time="64.1">
+ <testsuite name="Movie Cruiser Angular App" timestamp="2018-08-24T10:10:51" hostname="localhost" time="64.1" errors="0" tests="12" skipped="0" disabled="0" failures="0">
+  <testcase classname="Movie Cruiser Angular App" name="Should Display Movie Cruiser Application As Title" time="7.581" />
+  <testcase classname="Movie Cruiser Angular App" name="Should Be Redirected To /login Route On Opening The Application" time="0.026" />
+  <testcase classname="Movie Cruiser Angular App" name="Should Be Redirected To /register Route On Clicking The Register Button" time="0.528" />
+  <testcase classname="Movie Cruiser Angular App" name="Should Be Register A User On Clicking The Register Button" time="6.6" />
+  <testcase classname="Movie Cruiser Angular App" name="Should Be Able To Login Using Register User On Clicking The Login Button" time="6.898" />
+  <testcase classname="Movie Cruiser Angular App" name="Should Be Able To AddToWatchList On Clicking The AddToWatchList Button In Popular Page" time="5.342" />
+  <testcase classname="Movie Cruiser Angular App" name="Should Be Able To AddToWatchList On Clicking The AddToWatchList Button In Top Rated Page" time="5.616" />
+  <testcase classname="Movie Cruiser Angular App" name="Should Be Able To AddToWatchList On Clicking The AddToWatchList Button In Search Page" time="7.014" />
+  <testcase classname="Movie Cruiser Angular App" name="Should Be Able To View All Movies AddedToWatchList On Clicking The WatchList Button In WatchList Page" time="5.339" />
+  <testcase classname="Movie Cruiser Angular App" name="Should Be Able To Update All Movies AddedToWatchList On Clicking The WatchList Button In WatchList Page" time="7.151" />
+  <testcase classname="Movie Cruiser Angular App" name="Should Be Able To Delete A Movies On Clicking The Delete Button In WatchList Page" time="6.663" />
+  <testcase classname="Movie Cruiser Angular App" name="Should Be Able To LogOut Using Logout Menu On Clicking The Logout Button" time="5.334" />
  </testsuite>
 </testsuites>
