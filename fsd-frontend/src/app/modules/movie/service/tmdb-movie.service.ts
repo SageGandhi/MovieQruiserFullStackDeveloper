@@ -63,6 +63,7 @@ export class TmdbMovieService {
   }
   searchByText(searchText:string):Observable<Array<Movie>>{
     let searchUri = `${this.movieSearchUri}?${this.apiKeyQueryString}&language=en-US&page=1&include_adult=false&query=${searchText}`;
+    console.log(searchUri);
     return this.http.get(searchUri).pipe(retry(3),map(this.pickMovieResults),map(this.transformPosterPath.bind(this)));
   }
 }
